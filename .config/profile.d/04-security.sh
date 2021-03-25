@@ -14,7 +14,7 @@ fi
 # gpg-agent freebsd
 case "${DISTRO}" in
     freebsd)
-        if [ ! "$(pgrep -x gpg-agent)" ];then
+        if [ ! "$(pgrep -u ${USER} -x gpg-agent)" ];then
             /usr/local/bin/gpg-agent --enable-ssh-support \
                 --pinentry-program /usr/local/bin/pinentry \
                 --daemon "$@"
@@ -26,7 +26,7 @@ case "${DISTRO}" in
         ;;
     *)
         # append pinentry-program since its location varied for each distro
-        [ -z "$(pgrep -x gpg-agent)" ] &&
+        [ -z "$(pgrep -u ${USER} -x gpg-agent)" ] &&
             gpg-agent --pinentry-program "$(command -v pinentry)" > /dev/null 2>&1
         ;;
 esac
