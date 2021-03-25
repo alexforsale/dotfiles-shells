@@ -1,5 +1,5 @@
 #!/bin/sh
-# ~/.config/profile.d/02-editors.sh
+# ~/.config/profile.d/03-terminal.sh
 # ${TERMINAL} apps
 # <alexforsale@yahoo.com>
 
