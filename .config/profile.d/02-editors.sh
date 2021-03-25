@@ -5,55 +5,54 @@
 
 # see https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
 if [ "$(command -v emacs)" ];then # use emacsclient since emacs should already started as daemon
-    export VISUAL="emacsclient -c"
-    export EDITOR="emacsclient -t"
+    export VISUAL="${VISUAL:-emacsclient -c}"
+    export EDITOR="${EDITOR:-emacsclient -t}"
     if [ -z "${ORG_DIR}" ];then
         [ ! -d ~/Documents/org ] &&
             mkdir -p ~/Documents/org
     fi
     export ALTERNATE_EDITOR=${VISUAL}
 elif [ "$(command -v gvim)" ];then # in case it's available, I don't use much of this
-    export EDITOR="vim" # this should also installed
-    export VISUAL="gvim"
+    export EDITOR="${EDITOR:-vim}" # this should also installed
+    export VISUAL="${VISUAL:-gvim}"
     export VIMINIT="let \$MYVIMRC=\"${XDG_CONFIG_HOME}/vim/vimrc\" | source \${MYVIMRC}"
 elif [ "$(command -v vim)" ];then # most distro provide this (linux that is)
-    export EDITOR="vim"
-    export VISUAL="vim"
+    export EDITOR="${EDITOR:-vim}"
+    export VISUAL="${VISUAL:-vim}"
     export VIMINIT="let \$MYVIMRC=\"${XDG_CONFIG_HOME}/vim/vimrc\" | source \${MYVIMRC}"
     mkdir -p "${XDG_CONFIG_HOME}/vim"
     touch "${XDG_CONFIG_HOME}/vim/vimrc"
 else
-    # most unix os provide this,
-    # fallback when none of the other exists
-    [ $(command -v vi) ] &&
-        export EDITOR="vi"
-
     [ $(command -v nvim) ] &&
-        export EDITOR="nvim"
+        export EDITOR="${EDITOR:-nvim}"
 
     [ $(command -v leafpad) ] &&
-        export EDITOR="leafpad"
+        export EDITOR="${EDITOR:-leafpad}"
 
     [ $(command -v l3afpad) ] &&
-        export EDITOR="l3afpad"
+        export EDITOR="${EDITOR:-l3afpad}"
 
     [ $(command -v kate) ] &&
-        export EDITOR="kate"
+        export EDITOR="${EDITOR:-kate}"
 
     [ $(command -v pluma) ] &&
-        export EDITOR="pluma"
+        export EDITOR="${EDITOR:-pluma}"
 
     [ $(command -v kwrite) ] &&
-        export EDITOR="kwrite"
+        export EDITOR="${EDITOR:-kwrite}"
 
     [ $(command -v scribe) ] &&
-        export EDITOR="scribe"
+        export EDITOR="${EDITOR:-scribe}"
 
     [ $(command -v geany) ] &&
-        export EDITOR="geany"
+        export EDITOR="${EDITOR:-geany}"
 
     [ $(command -v gedit) ] &&
-        export EDITOR="gedit"
+        export EDITOR="${EDITOR:-gedit}"
+
+    # most unix os provide this,
+    [ $(command -v vi) ] &&
+        export EDITOR="${EDITOR:-vi}"
 
     export VISUAL=${EDITOR}
     export ALTERNATE_EDITOR=${EDITOR}
