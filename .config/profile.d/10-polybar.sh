@@ -27,4 +27,9 @@ if [ -n "${DISPLAY}" ];then
 
         export POLYBAR_MONITOR=$(xrandr -q | grep " connected" | cut -d ' ' -f1)
     fi
+    # network interface
+    if [ $(command -v nmcli) ];then
+        export POLYBAR_ETH=$(nmcli device | awk '$2=="ethernet" {print $1}')
+        export POLYBAR_WLAN=$(nmcli device | awk '$2=="wifi" {print $1}')
+    fi
 fi
