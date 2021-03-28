@@ -6,5 +6,5 @@
 if [ "$(command -v emacs)" ] &&
        [ -e ~/.emacs.d/bin/doom ];then
     [ ! $(command -v doom) ] &&
-        export PATH=${PATH}:~/.emacs.d/bin/doom
+        export PATH=${PATH}:~/.emacs.d/bin
 fi
