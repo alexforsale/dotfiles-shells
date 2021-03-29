@@ -24,8 +24,6 @@ if [ -n "${DISPLAY}" ];then
                 POLYBAR_ADAPTER="$(ls -A /sys/class/power_supply/ | grep 'ADP')"
             fi
         fi
-
-        export POLYBAR_MONITOR=$(xrandr -q | grep " connected" | cut -d ' ' -f1)
     fi
     # network interface
     if [ $(command -v nmcli) ]; then
