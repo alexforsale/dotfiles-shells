@@ -19,15 +19,15 @@ elif [ "$(command -v seamonkey)" ];then
 elif [ "$(command -v falkon)" ];then
     export BROWSER=${BROWSER:-falkon}
 else
-    [ ${command -v elinks} ] &&
+    [ $(command -v elinks) ] &&
         export BROWSER=${BROWSER:-elinks}
 
-    [ ${command -v lynx} ] &&
+    [ $(command -v lynx) ] &&
         export BROWSER=${BROWSER:-lynx}
 
-    [ ${command -v w3m} ] &&
+    [ $(command -v w3m) ] &&
         export BROWSER=${BROWSER:-w3m}
 
-    [ ${command -v links} ] &&
+    [ $(command -v links) ] &&
         export BROWSER="${BROWSER:-links -g}"
 fi
