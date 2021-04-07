@@ -5,5 +5,5 @@
 
 # wal
 if [ $(command -v wal) ] && [ -z "${SSH_CLIENT}" ]; then
-    wal -R
+    wal -R >/dev/null 2>&1
 fi
