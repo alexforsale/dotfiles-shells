@@ -14,9 +14,17 @@ fi
 # gpg-agent freebsd
 case "${DISTRO}" in
     freebsd)
+        for i in curses gnome3 gtk2 qt5 ; do
+            if [ $(command -v pinentry-${i}) ]; then
+                _PINENTRY="$(command -v pinentry-${i})"
+            else
+                _PINENTRY="$(command -v pinentry)"
+            fi
+        done
+
         if [ ! "$(pgrep -u ${USER} -x gpg-agent)" ];then
             /usr/local/bin/gpg-agent --enable-ssh-support \
-                --pinentry-program /usr/local/bin/pinentry \
+                --pinentry-program ${_PINENTRY} \
                 --daemon "$@"
             if [ -f "${HOME}/.gpg-agent-info" ];then
                 . "${HOME}/.gpg-agent-info"
