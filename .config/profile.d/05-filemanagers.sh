@@ -16,6 +16,8 @@ elif [ "$(command -v nautilus)" ];then
     export FILE=${FILE:-nautilus}
 elif [ "$(command -v nemo)" ];then
     export FILE=${FILE:-nemo}
+elif [ "$(command -v dolphin)" ];then
+    export FILE${FILE:-dolpin}
 elif [ "$(command -v rox)" ];then
     export FILE=${FILE:-rox}
 fi
