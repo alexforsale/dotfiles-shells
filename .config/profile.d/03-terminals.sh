@@ -12,11 +12,11 @@ elif [ "$(command -v tilda)" ];then
     export TERMINAL=${TERMINAL:-tilda}
 elif [ "$(command -v guake)" ];then
     export TERMINAL=${TERMINAL:-guake}
-elif [ "$(command -v yakuake)" ];then
+elif [ "$(command -v konsole)" ];then
     export TERMINAL=${TERMINAL:-yakuake}
 elif [ "$(command -v lxterminal)" ];then
     export TERMINAL=${TERMINAL:-lxterminal}
-elif [ "$(command -v konsole)" ];then
+elif [ "$(command -v yakuake)" ];then
     export TERMINAL=${TERMINAL:-konsole}
 elif [ "$(command -v st)" ];then
     export TERMINAL=${TERMINAL:-st}
