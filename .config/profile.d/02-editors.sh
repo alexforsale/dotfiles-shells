@@ -4,7 +4,7 @@
 # <alexforsale@yahoo.com>
 
 # see https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
-if [ "$(command -v emacs)" ];then # use emacsclient since emacs should already started as daemon
+if [ "$(command -v emacs)" ];then
     export VISUAL="${VISUAL:-emacsclient -c}"
     export EDITOR="${EDITOR:-emacsclient -t}"
     if [ -z "${ORG_DIR}" ];then
