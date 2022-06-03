@@ -2,6 +2,7 @@
 # ~/.config/profile.d/99-nano.sh
 # see https://nano-editor.org
 # <alexforsale@yahoo.com>
+
 if [ "$(command -v nano)" ]; then
     if [ ! -d "${XDG_CONFIG_HOME}/nano" ]; then
         mkdir -p "${XDG_CONFIG_HOME}/nano"

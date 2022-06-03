@@ -2,6 +2,7 @@
 # ~/.config/profile.d/99-perl.sh
 # configuration for perl
 # <alexforsale@yahoo.com>
+
 [ ! -d "${HOME}/.local/perl5/bin" ] &&
     mkdir -p "${HOME}/.local/perl5/bin"
 [ ! -d "${HOME}/.local/perl5/lib/perl5" ] &&

@@ -3,6 +3,7 @@
 # node packaged module configuration
 # see https://wiki.archlinux.org/index.php/Node.js
 # <alexforsale@yahoo.com>
+
 if [ "$(command -v npm)" ];then
     if [ -d "$HOME/.node_modules/bin" ];then
         export PATH="$HOME/.node_modules/bin:$PATH"

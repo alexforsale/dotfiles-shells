@@ -2,7 +2,8 @@
 # ~/.config/profile.d/99-ccache.sh
 # ccache configuration
 # <alexforsale@yahoo.com>
-if [ "$(command -v ccache 2>/dev/null)" ] &&
+
+if [ "$(command -v ccache)" ] &&
        [ -d "/usr/lib/ccache/bin" ]; then
     if [ "${SHELL}" != "/bin/sh" ] &&
            [ "$(command -v pathprepend)" ]; then

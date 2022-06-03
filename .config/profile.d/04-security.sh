@@ -11,7 +11,7 @@ if [ -n "$SSH_CONNECTION" ] ;then
     export PINENTRY_USER_DATA="USE_CURSES=1"
 fi
 
-# gpg-agent freebsd
+# gpg-agent
 case "${DISTRO}" in
     freebsd)
         for i in curses gnome3 gtk2 qt5 ; do
@@ -24,8 +24,8 @@ case "${DISTRO}" in
 
         if [ ! "$(pgrep -u ${USER} -x gpg-agent)" ];then
             /usr/local/bin/gpg-agent --enable-ssh-support \
-                --pinentry-program ${_PINENTRY} \
-                --daemon "$@"
+                                     --pinentry-program ${_PINENTRY} \
+                                     --daemon "$@"
             if [ -f "${HOME}/.gpg-agent-info" ];then
                 . "${HOME}/.gpg-agent-info"
                 export GPG_AGENT_INFO SSH_AUTH_SOCK

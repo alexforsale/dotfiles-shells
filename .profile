@@ -4,6 +4,7 @@
 # source /etc/profile if exist.
 # <alexforsale@yahoo.com>
 #
+
 [ -f /etc/profile ] && . /etc/profile
 
 # this goes first in case others needs it.

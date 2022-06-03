@@ -4,7 +4,6 @@
 # <alexforsale@yahoo.com>
 
 # dont' source this in sh
-
 if [ "${SHELL}" = "/bin/sh" ]; then
     return
 fi

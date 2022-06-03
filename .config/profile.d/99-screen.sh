@@ -2,6 +2,7 @@
 # ~/.config/profile.d/99-screen.sh
 # configuration for GNU Screen
 # <alexforsale@yahoo.com>
+
 if [ "$(command -v screen)" ] &&
        [ ! -d "${XDG_CONFIG_HOME}/screen" ]; then
     if [ -d "${HOME}/.screen" ]; then
