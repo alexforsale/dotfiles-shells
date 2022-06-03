@@ -1,4 +1,59 @@
 #+TITLE: Readme
+
+* .shrc
+  :PROPERTIES:
+  :header-args: :tangle .shrc :shebang #!/bin/sh
+  :END:
+** header
+   #+begin_src sh
+     # $FreeBSD$
+     #
+     # .shrc - bourne shell startup file
+     #
+     # This file will be used if the shell is invoked for interactive use and
+     # the environment variable ENV is set to this file.
+     #
+     # see also sh(1), environ(7).
+     #
+   #+end_src
+** umask
+   #+begin_src sh
+     # file permissions: rwxr-xr-x
+     #
+     # umask	022
+   #+end_src
+** vi-mode shell
+   #+begin_src sh
+     # Uncomment this to enable the builtin vi(1) command line editor in sh(1),
+     # e.g. ESC to go into visual mode.
+     # set -o vi
+   #+end_src
+** some useful aliases
+   #+begin_src sh
+     alias h='fc -l'
+     alias j=jobs
+     alias m="$PAGER"
+     alias ll='ls -laFo'
+     alias l='ls -l'
+     alias g='egrep -i'
+   #+end_src
+** be paranoid
+   #+begin_src sh
+     # # be paranoid
+     # alias cp='cp -ip'
+     # alias mv='mv -i'
+     # alias rm='rm -i'
+   #+end_src
+** prompt
+   #+begin_src sh
+     # set prompt: ``username@hostname:directory $ ''
+     PS1="\u@\h:\w \\$ "
+   #+end_src
+** cd path
+   #+begin_src sh
+     # search path for cd(1)
+     # CDPATH=:$HOME
+   #+end_src
 * .profile
   :PROPERTIES:
   :header-args: :tangle .profile :shebang #!/bin/sh
