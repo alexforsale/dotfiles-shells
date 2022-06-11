@@ -1,8 +1,22 @@
-#+TITLE: Readme
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Common Shells Startup Files
+#+date: <2022-06-11 Sat>
+#+author: Kristian Alexander P
+#+email: alexforsale@yahoo.com
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 28.1 (Org mode 9.5.2)
+#+cite_export:
+#+property: EXPORT_FILE_NAME: index.html
 
 * .shrc
   :PROPERTIES:
-  :header-args: :tangle .shrc :shebang #!/bin/sh
+  :header-args: :tangle ~/.shrc :shebang #!/bin/sh
   :END:
 ** header
    #+begin_src sh
@@ -56,7 +70,7 @@
    #+end_src
 * .profile
   :PROPERTIES:
-  :header-args: :tangle .profile :shebang #!/bin/sh
+  :header-args: :tangle ~/.profile :shebang #!/bin/sh
   :END:
 ** header
    #+begin_src sh
@@ -130,7 +144,7 @@
 * .config/profile.d
 ** 00-distro.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/00-distro.sh :mkdirp t :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/00-distro.sh :mkdirp t :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -171,7 +185,7 @@
     #+end_src
 ** 00-locale.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/00-locale.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/00-locale.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -187,7 +201,7 @@
     #+end_src
 ** 01-xdg_base_directory.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/01-xdg_base_directory.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/01-xdg_base_directory.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -290,7 +304,7 @@
     #+end_src
 ** 02-editors.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/02-editors.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/02-editors.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -357,7 +371,7 @@
     #+end_src
 ** 03-terminal.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/03-terminals.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/03-terminals.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -398,7 +412,7 @@
     #+end_src
 ** 04-security.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/04-security.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/04-security.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -463,7 +477,7 @@
     #+end_src
 ** 05-filemanagers.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/05-filemanagers.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/05-filemanagers.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -494,7 +508,7 @@
     #+end_src
 ** 06-browser.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/06-browser.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/06-browser.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -535,7 +549,7 @@
     #+end_src
 ** 07-mail_apps.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/07-mail_apps.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/07-mail_apps.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -565,7 +579,7 @@
     #+end_src
 ** 10-polybar.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/10-polybar.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/10-polybar.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -611,7 +625,7 @@
     #+end_src
 ** 10-themes.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/10-themes.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/10-themes.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -621,7 +635,7 @@
     #+end_src
 ** 99-cargo.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-cargo.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-cargo.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -638,7 +652,7 @@
     #+end_src
 ** 99-ccache.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-ccache.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-ccache.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -667,7 +681,7 @@
     #+end_src
 ** 99-doom_emacs.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-doom_emacs.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-doom_emacs.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -685,7 +699,7 @@
     #+end_src
 ** 99-elinks.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-elinks.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-elinks.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -708,7 +722,7 @@
     #+end_src
 ** 99-emacs_vterm.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-emacs_vterm.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-emacs_vterm.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -768,7 +782,7 @@
     #+end_src
 ** 99-freebsd.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-freebsd.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-freebsd.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -790,7 +804,7 @@
     #+end_src
 ** 99-go.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-go.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-go.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -808,7 +822,7 @@
     #+end_src
 ** 99-nano.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-nano.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-nano.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -835,7 +849,7 @@
     #+end_src
 ** 99-npm.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-npm.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-npm.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -855,7 +869,7 @@
     #+end_src
 ** 99-perl.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-perl.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-perl.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -880,7 +894,7 @@
     #+end_src
 ** 99-ruby.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-ruby.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-ruby.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
@@ -899,7 +913,7 @@
     #+end_src
 ** 99-screen.sh
    :PROPERTIES:
-   :header-args: :tangle .config/profile.d/99-screen.sh :shebang #!/bin/sh
+   :header-args: :tangle ~/.config/profile.d/99-screen.sh :shebang #!/bin/sh
    :END:
 *** header
     #+begin_src sh
