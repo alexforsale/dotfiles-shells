@@ -870,10 +870,7 @@
 *** npm
     #+begin_src sh
       if [ "$(command -v npm)" ];then
-          if [ -d "$HOME/.node_modules/bin" ];then
-              export PATH="$HOME/.node_modules/bin:$PATH"
-          fi
-          export npm_config_prefix=~/.node_modules
+          export npm_config_prefix="${HOME}/.local"
       fi
     #+end_src
 ** 99-perl.sh
