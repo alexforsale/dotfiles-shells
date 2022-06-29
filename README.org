@@ -693,6 +693,23 @@
       # themes configuration
       # <alexforsale@yahoo.com>
     #+end_src
+*** themes
+    #+begin_src sh
+      # wal
+      if [ "$(command -v wal)" ] && [ -z "${SSH_CLIENT}" ]; then
+          wal -R
+      fi
+
+      if [ -n "${DESKTOP_SESSION}" ]; then
+          case ${XDG_CURRENT_DESKTOP} in
+              "KDE")
+                  if [ -n "${xrdb_args}" ]; then
+                      $(command -v xrdb) -merge "${xrdb_args}" "${HOME}"/.Xresources >/dev/null 2>&1
+                  fi
+                  ;;
+          esac
+      fi
+    #+end_src
 ** 99-cargo.sh
    :PROPERTIES:
    :header-args: :tangle ~/.config/profile.d/99-cargo.sh :shebang #!/bin/sh
