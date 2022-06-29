@@ -709,7 +709,7 @@
                   ;;
           esac
       fi
-      EXPORT GTK_THEME=Arc-Dark
+      export GTK_THEME=Arc-Dark
     #+end_src
 ** 99-cargo.sh
    :PROPERTIES:
