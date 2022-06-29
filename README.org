@@ -829,7 +829,7 @@
           return
       fi
     #+end_src
-*** vterm_printf
+*** =vterm_printf=
     #+begin_src sh
       vterm_printf(){
           if [ -n "$TMUX" ]; then
