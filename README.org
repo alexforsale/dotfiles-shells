@@ -709,6 +709,7 @@
                   ;;
           esac
       fi
+      EXPORT GTK_THEME=Arc-Dark
     #+end_src
 ** 99-cargo.sh
    :PROPERTIES:
@@ -1370,6 +1371,7 @@
                   breaksw
           endsw
       endif
+      setenv GTK_THEME "Arc-Dark"
     #+end_src
 *** 99-cargo.tcsh
     #+begin_src csh :tangle ~/.config/profile.d/99-cargo.tcsh :shebang #!/usr/bin/env tcsh
