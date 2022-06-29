@@ -42,6 +42,12 @@
      # e.g. ESC to go into visual mode.
      # set -o vi
    #+end_src
+** don't source this file if running =sh= or =dash=
+   #+begin_src sh
+     if ([ "${SHELL}" != "/bin/sh" ] && [ "${SHELL}" != "/bin/dash" ]);then
+        return
+     fi
+   #+end_src
 ** some useful aliases
    #+begin_src sh
      alias h='fc -l'
@@ -61,7 +67,11 @@
 ** prompt
    #+begin_src sh
      # set prompt: ``username@hostname:directory $ ''
-     PS1="\u@\h:\w \\$ "
+     if [ "${DISTRO}" = "freebsd" ]; then
+         PS1="\u@\h:\w \\$ "
+     else
+         PS1="${USER}@${HOSTNAME}:\${PWD} $ "
+     fi
    #+end_src
 ** cd path
    #+begin_src sh
@@ -729,7 +739,21 @@
               ;;
       esac
     #+end_src
-** 99-doom_emacs.sh
+** 99-dash.sh
+   :PROPERTIES:
+   :header-args: :tangle ~/.config/profile.d/99-dash.sh :shebang #!/bin/sh
+   :END:
+   #+begin_src sh
+     # ~/.config/profile.d/99-dash.sh
+     # configuration for dash shells and other sh equivalent
+     # <alexforsale@yahoo.com>
+
+     if ([ "${SHELL}" = "/bin/sh" ] || [ "${SHELL}" = "/bin/dash" ]);then
+        ENV=${HOME}/.shrc; export ENV
+        [ -x /usr/bin/resizewin ] && /usr/bin/resizewin -z
+     fi
+   #+end_src
+** =99-doom_emacs.sh=
    :PROPERTIES:
    :header-args: :tangle ~/.config/profile.d/99-doom_emacs.sh :shebang #!/bin/sh
    :END:
