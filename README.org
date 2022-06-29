@@ -1214,7 +1214,7 @@
              setenv CHEMACS_PROFILE `cat "${HOME}/.emacs-profile"`
       endif
 
-      if ( "${CHEMACS_PROFILE}" !- "" ) then
+      if ( "${CHEMACS_PROFILE}" != "" ) then
         setenv emacs_args "-s ${CHEMACS_PROFILE}"
       endif
 
@@ -1365,11 +1365,13 @@
       endif
 
       if ( $?DESKTOP_SESSION ) then
+          if ( $?XDG_CURRENT_DESKTOP ) then
           switch ( $XDG_CURRENT_DESKTOP )
               case KDE:
                   if ( $?xrdb_args ) xrdb -merge "${xrdb_args}" ${HOME}/.Xresources
                   breaksw
           endsw
+          endif
       endif
       setenv GTK_THEME "Arc-Dark"
     #+end_src
