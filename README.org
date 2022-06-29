@@ -853,7 +853,7 @@
           }
       fi
     #+end_src
-*** vterm_cmd
+*** =vterm_cmd=
     #+begin_src sh
       vterm_cmd() {
           local vterm_elisp
@@ -865,7 +865,7 @@
           vterm_printf "51;E$vterm_elisp"
       }
     #+end_src
-*** vterm_prompt_end
+*** =vterm_prompt_end=
     #+begin_src sh
       vterm_prompt_end(){
           vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
