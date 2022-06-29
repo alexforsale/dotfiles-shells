@@ -135,7 +135,7 @@
          export PATH="${HOME}/bin:${PATH}"
      fi
      if [ -d "$HOME/.local/bin" ];then
-         export PATH="${HOME}/.local/bin:${PATH}"
+        export PATH="${HOME}/.local/bin:${PATH}"
      fi
    #+end_src
 ** load users modular configuration files
@@ -170,10 +170,10 @@
    #+begin_src sh
      # local ~/.profile
      if [ -r "${HOME}"/.config/profile.local ];then
-         . "${HOME}"/.config/profile.local
-     elif [ -r "${HOME}"/.profile.local ];then
-         . "${HOME}"/.profile.local
-     fi
+        . "${HOME}"/.config/profile.local
+        elif [ -r "${HOME}"/.profile.local ];then
+             . "${HOME}"/.profile.local
+        fi
    #+end_src
 ** bash specifics
    #+begin_src sh
@@ -243,7 +243,7 @@
       [ -z "${LANG}" ] && export LANG=en_US.UTF-8
       [ -z "${MM_CHARSET}" ] && export MM_CHARSET=en_US.UTF-8
     #+end_src
-** 01-xdg_base_directory.sh
+** =01-xdg_base_directory.sh=
    :PROPERTIES:
    :header-args: :tangle ~/.config/profile.d/01-xdg_base_directory.sh :shebang #!/bin/sh
    :END:
@@ -254,7 +254,7 @@
       # https://wiki.archlinux.org/index.php/XDG_BASE_Directory_support
       # <alexforsale@yahoo.com>
     #+end_src
-*** ${XDG_CONFIG_HOME}
+*** =${XDG_CONFIG_HOME}=
     #+begin_src sh
       if [ -z "${XDG_CONFIG_HOME}" ]; then
           if [ -d "${HOME}/.config" ]; then
@@ -264,7 +264,7 @@
 
       XDG_CONFIG_HOME="${HOME}/.config"
     #+end_src
-*** ${XDG_CACHE_HOME}
+*** =${XDG_CACHE_HOME}=
     #+begin_src sh
       if [ -z "${XDG_CACHE_HOME}" ]; then
           if [ -d "${HOME}/.cache" ]; then
@@ -274,7 +274,7 @@
 
       XDG_CACHE_HOME="${HOME}/.cache"
     #+end_src
-*** ${XDG_DATA_HOME}
+*** =${XDG_DATA_HOME}=
     #+begin_src sh
       if [ -z "${XDG_DATA_HOME}" ]; then
           if [ -d "${HOME}/.local/share" ]; then
@@ -284,35 +284,35 @@
 
       XDG_DATA_HOME="${HOME}/.local/share"
     #+end_src
-*** ${XDG_RUNTIME_DIR}
+*** =${XDG_RUNTIME_DIR}=
     #+begin_src sh
       if [ -z "${XDG_RUNTIME_DIR}" ]; then
           case "${DISTRO}" in
               "gentoo")
                   XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
                   if [ ! -d "${XDG_RUNTIME_DIR}" ];then
-                      mkdir -p "${XDG_RUNTIME_DIR}"
-                      chmod 0700 "${XDG_RUNTIME_DIR}"
+                     mkdir -p "${XDG_RUNTIME_DIR}"
+                     chmod 0700 "${XDG_RUNTIME_DIR}"
                   fi
-                  ;;
-              "arch")
-                  XDG_RUNTIME_DIR="/run/user/$(id -u)"
-                  if [ ! -d "${XDG_RUNTIME_DIR}" ];then
-                      mkdir -p "${XDG_RUNTIME_DIR}"
-                      chmod 0700 "${XDG_RUNTIME_DIR}"
-                  fi
-                  ;;
-              "freebsd")
-                  XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
-                  if [ ! -d "${XDG_RUNTIME_DIR}" ];then
-                      mkdir -p "${XDG_RUNTIME_DIR}"
-                      chmod 0700 "${XDG_RUNTIME_DIR}"
-                  fi
-                  ;;
+                     ;;
+                     "arch")
+                         XDG_RUNTIME_DIR="/run/user/$(id -u)"
+                         if [ ! -d "${XDG_RUNTIME_DIR}" ];then
+                            mkdir -p "${XDG_RUNTIME_DIR}"
+                            chmod 0700 "${XDG_RUNTIME_DIR}"
+                         fi
+                            ;;
+                            "freebsd")
+                                XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
+                                if [ ! -d "${XDG_RUNTIME_DIR}" ];then
+                                   mkdir -p "${XDG_RUNTIME_DIR}"
+                                   chmod 0700 "${XDG_RUNTIME_DIR}"
+                                fi
+                                   ;;
           esac
       fi
     #+end_src
-*** ${DBUS_SESSION_BUS_ADDRESS}
+*** =${DBUS_SESSION_BUS_ADDRESS}=
     #+begin_src sh
       if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
           # differs per distro
@@ -336,11 +336,11 @@
       for dir in "${XDG_DESKTOP_DIR}" "${XDG_DOWNLOAD_DIR}" "${XDG_TEMPLATES_DIR}" \
                                       "${XDG_PUBLICSHARE_DIR}" "${XDG_DOCUMENTS_DIR}" "${XDG_MUSIC_DIR}" \
                                       "${XDG_PICTURES_DIR}" "${XDG_VIDEOS_DIR}";do
-          if [ ! -d "${dir}" ] || [ ! -L "${dir}" ];then
-              mkdir -p "${dir}" 2>/dev/null
-          fi
-      done
-      unset dir
+                 if [ ! -d "${dir}" ] || [ ! -L "${dir}" ];then
+                    mkdir -p "${dir}" 2>/dev/null
+                 fi
+              done
+                 unset dir
     #+end_src
 *** Exports
     #+begin_src sh
@@ -360,9 +360,9 @@
     #+begin_src sh
       # chemacs-profile
       if [ -e "${HOME}/.config/chemacs/profile" ]; then
-            export CHEMACS_PROFILE="$(cat ${HOME}/.config/chemacs/profile)"
+          export CHEMACS_PROFILE="$(cat ${HOME}/.config/chemacs/profile)"
       elif [ -e "${HOME}/.emacs-profile" ]; then
-            export CHEMACS_PROFILE="$(cat ${HOME}/.emacs-profile)"
+          export CHEMACS_PROFILE="$(cat ${HOME}/.emacs-profile)"
       fi
 
       [ -n "${CHEMACS_PROFILE}" ] && emacs_args="-s ${CHEMACS_PROFILE}"
@@ -436,32 +436,32 @@
     #+begin_src sh
       # Terminal apps
       if [ "$(command -v gnome-terminal)" ];then
-          export TERMINAL=${TERMINAL:-gnome-terminal}
-      elif [ "$(command -v terminator)" ];then
-          export TERMINAL=${TERMINAL:-terminator}
-      elif [ "$(command -v tilda)" ];then
-          export TERMINAL=${TERMINAL:-tilda}
-      elif [ "$(command -v guake)" ];then
-          export TERMINAL=${TERMINAL:-guake}
-      elif [ "$(command -v konsole)" ];then
-          export TERMINAL=${TERMINAL:-yakuake}
-      elif [ "$(command -v lxterminal)" ];then
-          export TERMINAL=${TERMINAL:-lxterminal}
-      elif [ "$(command -v yakuake)" ];then
-          export TERMINAL=${TERMINAL:-konsole}
-      elif [ "$(command -v st)" ];then
-          export TERMINAL=${TERMINAL:-st}
-      elif [ "$(command -v terminology)" ];then
-          export TERMINAL=${TERMINAL:-terminology}
-      elif [ "$(command -v xfce4-terminal)" ];then
-          export TERMINAL=${TERMINAL:-xfce4-terminal}
-      elif [ "$(command -v lilyterm)" ];then
-          export TERMINAL=${TERMINAL:-lilyterm}
-      elif [ "$(command -v urxvt)" ];then
-          export TERMINAL=${TERMINAL:-urxvt}
-      elif [ "$(command -v xterm)" ];then
-          export TERMINAL=${TERMINAL:-xterm}
-      fi
+         export TERMINAL=${TERMINAL:-gnome-terminal}
+         elif [ "$(command -v terminator)" ];then
+              export TERMINAL=${TERMINAL:-terminator}
+         elif [ "$(command -v tilda)" ];then
+              export TERMINAL=${TERMINAL:-tilda}
+         elif [ "$(command -v guake)" ];then
+              export TERMINAL=${TERMINAL:-guake}
+         elif [ "$(command -v konsole)" ];then
+              export TERMINAL=${TERMINAL:-yakuake}
+         elif [ "$(command -v lxterminal)" ];then
+              export TERMINAL=${TERMINAL:-lxterminal}
+         elif [ "$(command -v yakuake)" ];then
+              export TERMINAL=${TERMINAL:-konsole}
+         elif [ "$(command -v st)" ];then
+              export TERMINAL=${TERMINAL:-st}
+         elif [ "$(command -v terminology)" ];then
+              export TERMINAL=${TERMINAL:-terminology}
+         elif [ "$(command -v xfce4-terminal)" ];then
+              export TERMINAL=${TERMINAL:-xfce4-terminal}
+         elif [ "$(command -v lilyterm)" ];then
+              export TERMINAL=${TERMINAL:-lilyterm}
+         elif [ "$(command -v urxvt)" ];then
+              export TERMINAL=${TERMINAL:-urxvt}
+         elif [ "$(command -v xterm)" ];then
+              export TERMINAL=${TERMINAL:-xterm}
+         fi
     #+end_src
 ** 04-security.sh
    :PROPERTIES:
@@ -473,16 +473,16 @@
       # various security apps
       # <alexforsale@yahoo.com>
     #+end_src
-*** ${GPG_TTY}
+*** =${GPG_TTY}=
     #+begin_src sh
       # from https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
       [ -z "${GPG_TTY}" ] && export GPG_TTY="$(tty)"
     #+end_src
-*** ${SSH_CONNECTION}
+*** =${SSH_CONNECTION}=
     #+begin_src sh
       # https://wiki.gentoo.org/wiki/GnuPG#Automatically_starting_the_GPG_agent
       if [ -n "$SSH_CONNECTION" ] ;then
-          export PINENTRY_USER_DATA="USE_CURSES=1"
+         export PINENTRY_USER_DATA="USE_CURSES=1"
       fi
     #+end_src
 *** Pinentry and GPG Agent
@@ -499,27 +499,27 @@
               done
 
               if [ ! "$(pgrep -u ${USER} -x gpg-agent)" ];then
-                  /usr/local/bin/gpg-agent --enable-ssh-support \
-                                           --pinentry-program ${_PINENTRY} \
-                                           --daemon "$@"
-                  if [ -f "${HOME}/.gpg-agent-info" ];then
-                      . "${HOME}/.gpg-agent-info"
-                      export GPG_AGENT_INFO SSH_AUTH_SOCK
-                  fi
-              fi
-              ;;
-          ,*)
-              # append pinentry-program since its location varied for each distro
-              [ -z "$(pgrep -u ${USER} -x gpg-agent)" ] &&
-                  gpg-agent --pinentry-program "$(command -v pinentry)" > /dev/null 2>&1
-              ;;
+                 /usr/local/bin/gpg-agent --enable-ssh-support \
+                                          --pinentry-program ${_PINENTRY} \
+                                          --daemon "$@"
+                 if [ -f "${HOME}/.gpg-agent-info" ];then
+                    . "${HOME}/.gpg-agent-info"
+                    export GPG_AGENT_INFO SSH_AUTH_SOCK
+                 fi
+                 fi
+                    ;;
+                    ,*)
+                        # append pinentry-program since its location varied for each distro
+                        [ -z "$(pgrep -u ${USER} -x gpg-agent)" ] &&
+                            gpg-agent --pinentry-program "$(command -v pinentry)" > /dev/null 2>&1
+                        ;;
       esac
     #+end_src
 *** set ssh auth sock
     #+begin_src sh
       unset SSH_AGENT_PID
       if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-            export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+          export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
       fi
     #+end_src
 *** Keychain
@@ -527,12 +527,12 @@
       # keychain
       # https://wiki.gentoo.org/wiki/Keychain
       if [ "$(command -v keychain)" ];then
-          [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
-          keychain --quiet --agents "gpg,ssh"
-          [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && \
-              . "${HOME}/.keychain/${HOSTNAME}-sh"
-          [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && \
-              . "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
+         [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
+         keychain --quiet --agents "gpg,ssh"
+         [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] && \
+             . "${HOME}/.keychain/${HOSTNAME}-sh"
+         [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] && \
+             . "${HOME}/.keychain/${HOSTNAME}-sh-gpg"
       fi
     #+end_src
 ** 05-filemanagers.sh
@@ -549,22 +549,22 @@
     #+begin_src sh
       # file manager
       if [ "$(command -v ranger)" ];then
-          export FILE=${FILE:-ranger}
-      elif [ "$(command -v pcmanfm)" ]; then
+         export FILE=${FILE:-ranger}
+         elif [ "$(command -v pcmanfm)" ]; then
           export FILE=${FILE:-pcmanfm}
-      elif [ "$(command -v thunar)" ];then
-          export FILE=${FILE:-thunar}
-      elif [ "$(command -v caja)" ];then
-          export FILE=${FILE:-caja}
-      elif [ "$(command -v nautilus)" ];then
-          export FILE=${FILE:-nautilus}
-      elif [ "$(command -v nemo)" ];then
-          export FILE=${FILE:-nemo}
-      elif [ "$(command -v dolphin)" ];then
-          export FILE${FILE:-dolpin}
-      elif [ "$(command -v rox)" ];then
-          export FILE=${FILE:-rox}
-      fi
+         elif [ "$(command -v thunar)" ];then
+              export FILE=${FILE:-thunar}
+         elif [ "$(command -v caja)" ];then
+              export FILE=${FILE:-caja}
+         elif [ "$(command -v nautilus)" ];then
+              export FILE=${FILE:-nautilus}
+         elif [ "$(command -v nemo)" ];then
+              export FILE=${FILE:-nemo}
+         elif [ "$(command -v dolphin)" ];then
+              export FILE${FILE:-dolpin}
+         elif [ "$(command -v rox)" ];then
+              export FILE=${FILE:-rox}
+         fi
     #+end_src
 ** 06-browser.sh
    :PROPERTIES:
@@ -582,17 +582,17 @@
       if [ "$(command -v google-chrome-stable)" ]; then
           export BROWSER=${BROWSER:-google-chrome-stable}
       elif [ "$(command -v midori)" ];then
-          export BROWSER=${BROWSER:-midori}
+           export BROWSER=${BROWSER:-midori}
       elif [ "$(command -v qutebrowser)" ];then
-          export BROWSER=${BROWSER:-qutebrowser}
+           export BROWSER=${BROWSER:-qutebrowser}
       elif [ "$(command -v chromium)" ];then
-          export BROWSER=${BROWSER:-chromium}
+           export BROWSER=${BROWSER:-chromium}
       elif [ "$(command -v firefox)" ];then
-          export BROWSER=${BROWSER:-firefox}
+           export BROWSER=${BROWSER:-firefox}
       elif [ "$(command -v seamonkey)" ];then
-          export BROWSER=${BROWSER:-seamonkey}
+           export BROWSER=${BROWSER:-seamonkey}
       elif [ "$(command -v falkon)" ];then
-          export BROWSER=${BROWSER:-falkon}
+           export BROWSER=${BROWSER:-falkon}
       else
           [ $(command -v elinks) ] &&
               export BROWSER=${BROWSER:-elinks}
@@ -607,7 +607,7 @@
               export BROWSER="${BROWSER:-links -g}"
       fi
     #+end_src
-** 07-mail_apps.sh
+** =07-mail_apps.sh=
    :PROPERTIES:
    :header-args: :tangle ~/.config/profile.d/07-mail_apps.sh :shebang #!/bin/sh
    :END:
@@ -617,7 +617,7 @@
       # ${MAIL_APP} configuration
       # <alexforsale@yahoo.com>
     #+end_src
-*** ${MAIL_APP}
+*** =${MAIL_APP}=
     #+begin_src sh
       if [ "$(command -v alpine)" ]; then
           export MAIL_APP=${MAIL_APP:-alpine}
@@ -651,37 +651,37 @@
     #+begin_src sh
       if [ $(command -v polybar) ]; then
           if [ -n "${DISPLAY}" ];then
-              if [ "$(command -v polybar)" ];then
-                  if [ "${DISTRO}" = "freebsd" ]; then
-                      # not all modules are available in freebsd
-                      export POLYBAR_CONFIG="${POLYBAR_CONFIG:-desktop}"
-                  else
-                      # https://superuser.com/questions/877677/programatically-determine-if-an-script-is-being-executed-on-laptop-or-desktop/877796
-                      case $(cat /sys/class/dmi/id/chassis_type 2>/dev/null) in
-                          8|9|10|11)
-                              # portable
-                              export POLYBAR_CONFIG="${POLYBAR_CONFIG:-laptop}"
-                              ;;
-                          ,*)
-                              export POLYBAR_CONFIG="${POLYBAR_CONFIG:-desktop}"
-                              ;;
-                      esac
-                      if [ -n "$(ls -A /sys/class/power_supply/ 2>/dev/null)" ];then
-                          POLYBAR_BATTERY="$(ls -A /sys/class/power_supply/ | grep 'BAT')"
-                          POLYBAR_ADAPTER="$(ls -A /sys/class/power_supply/ | grep 'ADP')"
-                      fi
-                  fi
-              fi
-              # network interface
-              if [ $(command -v nmcli) ]; then
-                  export POLYBAR_ETH=$(nmcli device | awk '$2=="ethernet" {print $1}')
-                  export POLYBAR_WLAN=$(nmcli device | awk '$2=="wifi" {print $1}')
-              elif [ $(command -v ip) ]; then
-                  export POLYBAR_ETH=$(ip link show | grep "state UP"| awk 'NR==1 {print $2}' |sed 's/\://')
-                  #TODO: wireless
-              fi
-          fi
-      fi
+             if [ "$(command -v polybar)" ];then
+                if [ "${DISTRO}" = "freebsd" ]; then
+                    # not all modules are available in freebsd
+                    export POLYBAR_CONFIG="${POLYBAR_CONFIG:-desktop}"
+                else
+                    # https://superuser.com/questions/877677/programatically-determine-if-an-script-is-being-executed-on-laptop-or-desktop/877796
+                    case $(cat /sys/class/dmi/id/chassis_type 2>/dev/null) in
+                        8|9|10|11)
+                            # portable
+                            export POLYBAR_CONFIG="${POLYBAR_CONFIG:-laptop}"
+                            ;;
+                        ,*)
+                            export POLYBAR_CONFIG="${POLYBAR_CONFIG:-desktop}"
+                            ;;
+                    esac
+                    if [ -n "$(ls -A /sys/class/power_supply/ 2>/dev/null)" ];then
+                       POLYBAR_BATTERY="$(ls -A /sys/class/power_supply/ | grep 'BAT')"
+                       POLYBAR_ADAPTER="$(ls -A /sys/class/power_supply/ | grep 'ADP')"
+                    fi
+                    fi
+                    fi
+                       # network interface
+                       if [ $(command -v nmcli) ]; then
+                           export POLYBAR_ETH=$(nmcli device | awk '$2=="ethernet" {print $1}')
+                           export POLYBAR_WLAN=$(nmcli device | awk '$2=="wifi" {print $1}')
+                       elif [ $(command -v ip) ]; then
+                           export POLYBAR_ETH=$(ip link show | grep "state UP"| awk 'NR==1 {print $2}' |sed 's/\://')
+                           #TODO: wireless
+                       fi
+                    fi
+                    fi
     #+end_src
 ** 10-themes.sh
    :PROPERTIES:
@@ -707,7 +707,7 @@
 *** Cargo Path
     #+begin_src sh
       if [ -d "$HOME/.cargo/bin" ];then
-          export PATH=$HOME/.cargo/bin:$PATH
+         export PATH=$HOME/.cargo/bin:$PATH
       fi
     #+end_src
 ** 99-ccache.sh
@@ -767,8 +767,8 @@
     #+begin_src sh
       if [ "$(command -v emacs)" ] &&
              [ -e ~/.emacs.d/bin/doom ];then
-          [ ! $(command -v doom) ] &&
-              export PATH=${PATH}:~/.emacs.d/bin
+         [ ! $(command -v doom) ] &&
+             export PATH=${PATH}:~/.emacs.d/bin
       fi
     #+end_src
 ** 99-elinks.sh
@@ -784,17 +784,17 @@
 *** elinks
     #+begin_src sh
       if [ "$(command -v elinks)" ];then
-          if [ -d "${XDG_CONFIG_HOME}"/elinks ];then
-              if [ -d "${HOME}/.elinks" ]; then
-                  mv "${HOME}/.elinks" "${XDG_CONFIG_HOME}/elinks"
-              else
-                  mkdir -p "${XDG_CONFIG_HOME}/elinks"
-              fi
-          fi
-          export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
-      fi
+         if [ -d "${XDG_CONFIG_HOME}"/elinks ];then
+            if [ -d "${HOME}/.elinks" ]; then
+                mv "${HOME}/.elinks" "${XDG_CONFIG_HOME}/elinks"
+            else
+                mkdir -p "${XDG_CONFIG_HOME}/elinks"
+            fi
+         fi
+            export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
+         fi
     #+end_src
-** 99-emacs_vterm.sh
+** =99-emacs_vterm.sh=
    :PROPERTIES:
    :header-args: :tangle ~/.config/profile.d/99-emacs_vterm.sh :shebang #!/bin/sh
    :END:
@@ -867,13 +867,13 @@
 *** from the original /FreeBSD/ =~/.profile=
     #+begin_src sh
       if [ "${DISTRO}" = "freebsd" ];then
-          ENV=${HOME}/.shrc; export ENV
-          export PAGER=less
-          [ -x /usr/bin/resizewin ] && /usr/bin/resizewin -z
-          [ -x /usr/bin/fortune ] && /usr/bin/fortune freebsd-tips
-          # Let sh(1) know it's at home, despite /home being a symlink.
-          if [ "$PWD" != "$HOME" ] && [ "$PWD" -ef "$HOME" ] ; then cd ; fi
-          cd ${HOME}
+         ENV=${HOME}/.shrc; export ENV
+         export PAGER=less
+         [ -x /usr/bin/resizewin ] && /usr/bin/resizewin -z
+         [ -x /usr/bin/fortune ] && /usr/bin/fortune freebsd-tips
+         # Let sh(1) know it's at home, despite /home being a symlink.
+         if [ "$PWD" != "$HOME" ] && [ "$PWD" -ef "$HOME" ] ; then cd ; fi
+         cd ${HOME}
       fi
     #+end_src
 ** 99-go.sh
@@ -889,9 +889,9 @@
 *** ${GOPATH}
     #+begin_src sh
       if [ "$(command -v go)" ];then
-          # set GOPATH to ~/.local so we don't need
-          # to add more PATH
-          export GOPATH=${GOPATH:-~/.local}
+         # set GOPATH to ~/.local so we don't need
+         # to add more PATH
+         export GOPATH=${GOPATH:-~/.local}
       fi
     #+end_src
 ** 99-nano.sh
@@ -935,7 +935,7 @@
 *** npm
     #+begin_src sh
       if [ "$(command -v npm)" ];then
-          export npm_config_prefix="${HOME}/.local"
+         export npm_config_prefix="${HOME}/.local"
       fi
     #+end_src
 ** 99-perl.sh
@@ -975,10 +975,9 @@
     #+end_src
 *** ruby
     #+begin_src sh
-      if [ "$(command -v ruby)" ];then
-          if [ -d "$(ruby -e 'print Gem.user_dir')/bin" ];then
-              PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-          fi
+      if [ "$(command -v ruby)" ] &&
+             [ -d "$(ruby -e 'print Gem.user_dir')/bin" ];then
+         PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
       fi
       export PATH
     #+end_src
@@ -994,7 +993,7 @@
     #+end_src
 *** nix
     #+begin_src sh
-    [ -d "${HOME}/.nix-profile/bin" ] && export PATH=${PATH}:${HOME}/.nix-profile/bin
+      [ -d "${HOME}/.nix-profile/bin" ] && export PATH=${PATH}:${HOME}/.nix-profile/bin
     #+end_src
 ** 99-screen.sh
    :PROPERTIES:
