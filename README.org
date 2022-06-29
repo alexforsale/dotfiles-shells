@@ -1687,3 +1687,261 @@
 
       unset red green yellow blue magenta cyan yellow white purple end
     #+end_src
+* zsh
+** .zshenv
+   #+begin_src sh :tangle ~/.zshenv :shebang #!/usr/bin/env zsh
+     [ -z "${ZDOTDIR}" ] && export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+   #+end_src
+** ~/.config/zsh
+*** .zshrc
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/.zshrc :shebang #!/usr/bin/env zsh
+    :END:
+**** config
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # minimal zsh
+
+       if [ -d "${ZDOTDIR}"/conf.d ]; then
+           for files in "${ZDOTDIR}"/conf.d/*.zsh; do
+               [ -r "${files}" ] &&
+                   . "${files}"
+           done
+
+           unset files
+       fi
+
+       # local zshrc
+       if [ -f "${ZDOTDIR}"/.zshrc.local ]; then
+           . "${ZDOTDIR}"/.zshrc.local
+       fi
+     #+end_src
+*** .zprofile
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/.zprofile :shebang #!/usr/bin/env zsh
+    :END:
+**** config
+     #+begin_src sh
+       [ -e "${HOME}/.profile" ] && . "${HOME}/.profile"
+     #+end_src
+*** .zlogout
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/.zlogout :shebang #!/usr/bin/env zsh
+    :END:
+**** config
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+
+       if [ ${SHLVL} = 1 ]; then
+           [ -x /usr/bin/clear ] && /usr/bin/clear
+       fi
+
+       # end of "${ZDOTDIR}"/.zlogout
+     #+end_src
+*** .zlogin
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/.zlogin :shebang #!/usr/bin/env zsh
+    :END:
+**** config
+     #+begin_src sh
+       # .zlogin is sourced in login shells.  It should
+       # contain commands that should be executed only in
+       # login shells.  It should be used to set the terminal
+       # type and run a series of external commands (fortune,
+       # msgs, from, etc).
+       #
+       # <alexforsale@yahoo.com>
+       mesg y
+       #fortune linux
+     #+end_src
+** ~/.config/zsh/conf.d
+*** 20-completions.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/20-completions.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # completions settings
+     #+end_src
+**** config
+     #+begin_src sh
+       # Tab completion
+       autoload -Uz compinit && compinit
+       autoload -Uz promptinit && promptinit
+       setopt complete_in_word         # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
+       setopt auto_menu                # show completion menu on succesive tab presses
+       setopt autocd                   # cd to a folder just by typing it's name
+       ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&' # These "eat" the auto prior space after a tab complete
+
+       autoload -U select-word-style
+       select-word-style bash # only alphanumeric characters are considered word characters
+
+       # formatting and messages
+       zstyle ':completion:*' verbose yes
+       zstyle ':completion:*:descriptions' format '%B%d%b'
+       zstyle ':completion:*:messages' format '%d'
+       zstyle ':completion:*:warnings' format 'No matches for: %d'
+       zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+       zstyle ':completion:*' group-name ''
+
+       # match uppercase from lowercase
+       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+       # offer indexes before parameters in subscripts
+       zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+     #+end_src
+*** 20-modules.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/20-modules.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # modules settings
+     #+end_src
+**** config
+     #+begin_src sh
+       # Autoload zsh modules when they are referenced
+       zmodload -a zsh/zpty zpty
+       zmodload -a zsh/zprof zprof
+       zmodload -ap zsh/mapfile mapfile
+       # stat(1) is now commonly an external command, so just load zstat
+       zmodload -aF zsh/stat b:zstat
+     #+end_src
+*** 20-styles.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/20-styles.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # ux, themes, and style settings
+     #+end_src
+**** config
+     #+begin_src sh
+       # ctrl-s will no longer freeze the terminal.
+       stty erase "^?"
+
+       # alert me if something failed
+       #setopt printexitvalue
+
+       # don't warn me about bg processes when exiting
+       setopt nocheckjobs
+
+       # try to avoid the 'zsh: no matches found...'
+       setopt nonomatch
+
+       if [ $(ls --version &>/dev/null) ]; then
+           lsflags="--color --group-directories-first -F"
+       else
+           lsflags="-GF"
+           export CLICOLOR=1
+       fi
+
+       # simple prompt
+       case "${DISTRO}" in
+           "artix"|"arch")
+               # blue
+               prompt="%F{green}%n%f%F{white}@%f%F{blue}%M%f: %F{white}%~%f %# "
+               ;;
+           "debian"|"devuan"|"ubuntu")
+               prompt="%F{green}%n%f%F{white}@%f%F{purple}%M%f: %F{white}%~%f %# "
+               ;;
+           "freebsd")
+               prompt="%F{green}%n%f%F{white}@%f%F{red}%M%f: %F{white}%~%f %# "
+               ;;
+           "gentoo")
+               prompt="%F{green}%n%f%F{white}@%f%B%F{magenta}%M%f%b: %F{white}%~%f %# "
+               ;;
+       esac
+     #+end_src
+*** 21-bindings.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/21-bindings.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # keybindings
+     #+end_src
+**** config
+     #+begin_src sh
+       bindkey -e # emacs key bindings
+       # but use the vi navigation keys (hjkl) besides cursor keys in menu completion
+       zstyle ':completion:*' menu select ''
+       zmodload zsh/complist
+       bindkey -M menuselect 'h' vi-backward-char        # left
+       bindkey -M menuselect 'k' vi-up-line-or-history   # up
+       bindkey -M menuselect 'l' vi-forward-char         # right
+       bindkey -M menuselect 'j' vi-down-line-or-history # bottom
+     #+end_src
+*** 30-aliases.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/30-aliases.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # zsh aliases
+     #+end_src
+**** config
+     #+begin_src sh
+       # Aliases
+       alias ls="ls ${lsflags}"
+       alias ll="ls ${lsflags} -l"
+       alias la="ls ${lsflags} -la"
+       alias h="history"
+       alias hg="history -1000 | grep -i"
+       alias m="less"
+       alias dotconfig="$(command -v git) --git-dir=${HOME}/Projects/personal/dotfiles --work-tree=${HOME}"
+     #+end_src
+*** 30-history.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/30-history.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # History settings
+     #+end_src
+**** config
+     #+begin_src sh
+       HISTFILE=~/.history-zsh
+       HISTSIZE=10000
+       SAVEHIST=10000
+       setopt append_history           # allow multiple sessions to append to one history
+       setopt bang_hist                # treat ! special during command expansion
+       setopt extended_history         # Write history in :start:elasped;command format
+       setopt hist_expire_dups_first   # expire duplicates first when trimming history
+       setopt hist_find_no_dups        # When searching history, don't repeat setopt hist_ignore_dups         # ignore duplicate entries of previous events
+       setopt hist_ignore_space        # prefix command with a space to skip it's recording
+       setopt hist_reduce_blanks       # Remove extra blanks from each command added to history
+       setopt hist_verify              # Don't execute immediately upon history expansion
+       setopt inc_append_history       # Write to history file immediately, not when shell quits
+       setopt share_history            # Share history among all sessions
+       setopt histallowclobber         # add `|' to output redirections in the history
+     #+end_src
+*** 99-others.zsh
+    :PROPERTIES:
+    :header-args: :tangle ~/.config/zsh/conf.d/99-others.zsh :shebang #!/usr/bin/env zsh
+    :END:
+**** header
+     #+begin_src sh
+       # <alexforsale@yahoo.com>
+       # other uncategorized zsh settings
+     #+end_src
+**** config
+     #+begin_src sh
+       setopt interactive_comments     # allow # comments in shell; good for copy/paste
+       unsetopt correct_all            # I don't care for 'suggestions' from ZSH
+       export BLOCK_SIZE="'1"          # Add commas to file sizes
+
+       # automatically remove duplicates from these arrays
+       typeset -U path cdpath fpath manpath
+
+       # warning if file exists ('cat /dev/null > ~/.zshrc')
+       setopt nocheckjobs
+
+       MAILCHECK=300
+     #+end_src
