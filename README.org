@@ -866,7 +866,7 @@
       }
     #+end_src
 *** =vterm_prompt_end=
-    #+begin_src sh
+    #+begin_src sh :tangle no
       vterm_prompt_end(){
           vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
       }
@@ -1031,6 +1031,12 @@
 *** nix
     #+begin_src sh
       [ -d "${HOME}/.nix-profile/bin" ] && export PATH=${PATH}:${HOME}/.nix-profile/bin
+
+      if [ -n "${GUIX_LOCPATH}" ]; then
+          # source profile.d
+          [ -e /run/current-system/profile/etc/profile.d/nix.sh ] && . /run/current-system/profile/etc/profile.d/nix.sh
+          [ -e /run/current-system/profile/etc/profile.d/nix-daemon.sh ] && . /run/current-system/profile/etc/profile.d/nix-daemon.sh
+      fi
     #+end_src
 ** 99-screen.sh
    :PROPERTIES:
