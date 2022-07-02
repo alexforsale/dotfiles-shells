@@ -939,8 +939,6 @@
          # set the GUIX_BUILD_OPTIONS
          export GUIX_BUILD_OPTIONS="${GUIX_BUILD_OPTIONS} -v 3 -c 2 -M 2"
       fi
-
-
     #+end_src
 ** 99-nano.sh
    :PROPERTIES:
