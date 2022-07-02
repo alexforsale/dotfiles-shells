@@ -703,9 +703,9 @@
 *** themes
     #+begin_src sh
       # wal
-      if [ "$(command -v wal)" ] && [ -z "${SSH_CLIENT}" ]; then
-          wal -R
-      fi
+      #if [ "$(command -v wal)" ] && [ -z "${SSH_CLIENT}" ]; then
+      #    wal -R
+      #fi
 
       if [ -n "${DESKTOP_SESSION}" ]; then
           case ${XDG_CURRENT_DESKTOP} in
