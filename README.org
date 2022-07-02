@@ -1889,6 +1889,9 @@
            "gentoo")
                prompt="%F{green}%n%f%F{white}@%f%B%F{magenta}%M%f%b: %F{white}%~%f %# "
                ;;
+           "guix")
+               prompt="%F{green}%n%f%F{white}@%f%B%F{yellow}%M%f%b: %F{white}%~%f %# "
+               ;;
        esac
      #+end_src
 *** 21-bindings.zsh
