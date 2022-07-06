@@ -451,11 +451,11 @@
          elif [ "$(command -v guake)" ];then
               export TERMINAL=${TERMINAL:-guake}
          elif [ "$(command -v konsole)" ];then
-              export TERMINAL=${TERMINAL:-yakuake}
+              export TERMINAL=${TERMINAL:-konsole}
          elif [ "$(command -v lxterminal)" ];then
               export TERMINAL=${TERMINAL:-lxterminal}
          elif [ "$(command -v yakuake)" ];then
-              export TERMINAL=${TERMINAL:-konsole}
+              export TERMINAL=${TERMINAL:-yakuake}
          elif [ "$(command -v st)" ];then
               export TERMINAL=${TERMINAL:-st}
          elif [ "$(command -v terminology)" ];then
