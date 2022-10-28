@@ -16,7 +16,7 @@
 
 * .shrc
 :PROPERTIES:
-:header-args: :tangle ~/.shrc :shebang #!/bin/sh
+:header-args: :tangle .shrc :shebang #!/bin/sh
 :END:
 ** header
 #+begin_src sh
@@ -80,7 +80,7 @@
 #+end_src
 * .login
 :PROPERTIES:
-:header-args: :tangle ~/.login :shebang #!/usr/bin/env tcsh
+:header-args: :tangle .login :shebang #!/usr/bin/env tcsh
 :END:
 ** header
 #+begin_src csh
@@ -99,7 +99,7 @@
 #+end_src
 * .logout
 :PROPERTIES:
-:header-args: :tangle ~/.logout :shebang #!/usr/bin/env tcsh
+:header-args: :tangle .logout :shebang #!/usr/bin/env tcsh
 :END:
 ** header
 #+begin_src csh
@@ -114,7 +114,7 @@
 #+end_src
 * .profile
 :PROPERTIES:
-:header-args: :tangle ~/.profile :shebang #!/bin/sh
+:header-args: :tangle .profile :shebang #!/bin/sh
 :END:
 ** header
 #+begin_src sh
@@ -188,7 +188,7 @@
 * .config/profile.d
 ** 00-distro.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/00-distro.sh :mkdirp t :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/00-distro.sh :mkdirp t :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -229,7 +229,7 @@
 #+end_src
 ** 00-locale.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/00-locale.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/00-locale.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -245,7 +245,7 @@
 #+end_src
 ** =01-xdg_base_directory.sh=
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/01-xdg_base_directory.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/01-xdg_base_directory.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -355,7 +355,7 @@
 #+end_src
 ** 02-editors.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/02-editors.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/02-editors.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -431,7 +431,7 @@
 #+end_src
 ** 03-terminal.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/03-terminals.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/03-terminals.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -472,7 +472,7 @@
 #+end_src
 ** 04-security.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/04-security.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/04-security.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -544,7 +544,7 @@
 #+end_src
 ** 05-filemanagers.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/05-filemanagers.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/05-filemanagers.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -575,7 +575,7 @@
 #+end_src
 ** 06-browser.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/06-browser.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/06-browser.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -616,7 +616,7 @@
 #+end_src
 ** =07-mail_apps.sh=
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/07-mail_apps.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/07-mail_apps.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -646,7 +646,7 @@
 #+end_src
 ** 10-polybar.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/10-polybar.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/10-polybar.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -692,7 +692,7 @@
 #+end_src
 ** 10-themes.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/10-themes.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/10-themes.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -720,7 +720,7 @@
 #+end_src
 ** 99-cargo.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-cargo.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-cargo.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -737,7 +737,7 @@
 #+end_src
 ** 99-ccache.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-ccache.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-ccache.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -766,7 +766,7 @@
 #+end_src
 ** 99-dash.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-dash.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-dash.sh :shebang #!/bin/sh
 :END:
 #+begin_src sh
   # ~/.config/profile.d/99-dash.sh
@@ -780,7 +780,7 @@
 #+end_src
 ** =99-doom_emacs.sh=
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-doom_emacs.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-doom_emacs.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -798,7 +798,7 @@
 #+end_src
 ** 99-elinks.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-elinks.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-elinks.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -821,7 +821,7 @@
 #+end_src
 ** =99-emacs_vterm.sh=
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-emacs_vterm.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-emacs_vterm.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -881,7 +881,7 @@
 #+end_src
 ** 99-freebsd.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-freebsd.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-freebsd.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -903,7 +903,7 @@
 #+end_src
 ** 99-go.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-go.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-go.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -921,7 +921,7 @@
 #+end_src
 ** 99-guix.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-guix.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-guix.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -942,7 +942,7 @@
 #+end_src
 ** 99-nano.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-nano.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-nano.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -969,7 +969,7 @@
 #+end_src
 ** 99-npm.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-npm.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-npm.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -986,7 +986,7 @@
 #+end_src
 ** 99-perl.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-perl.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-perl.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -1011,7 +1011,7 @@
 #+end_src
 ** 99-ruby.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-ruby.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-ruby.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -1029,7 +1029,7 @@
 #+end_src
 ** 99-nix.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-nix.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-nix.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -1050,7 +1050,7 @@
 #+end_src
 ** 99-screen.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-screen.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-screen.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -1074,7 +1074,7 @@
 #+end_src
 ** 99-password-store.sh
 :PROPERTIES:
-:header-args: :tangle ~/.config/profile.d/99-password-store.sh :shebang #!/bin/sh
+:header-args: :tangle .config/profile.d/99-password-store.sh :shebang #!/bin/sh
 :END:
 *** header
 #+begin_src sh
@@ -1094,7 +1094,7 @@
 * Tcsh/csh
 ** tcshrc
 :PROPERTIES:
-:header-args: :tangle ~/.tcshrc :shebang #!/usr/bin/env tcsh
+:header-args: :tangle .tcshrc :shebang #!/usr/bin/env tcsh
 :END:
 #+begin_src csh
      # -*-mode: csh -*-
@@ -1141,7 +1141,7 @@
 #+end_src
 ** profile.d
 *** 00-distro.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/00-distro.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/00-distro.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/00-distro.tcsh
       # set distro environment
       # <alexforsale@yahoo.com>
@@ -1181,7 +1181,7 @@
       endif
 #+end_src
 *** 00-locale.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/00-locale.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/00-locale.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/00-locale.tcsh
       # locale settings
       # <alexforsale@yahoo.com>
@@ -1191,7 +1191,7 @@
       if ( ! $?MM_CHARSET ) setenv MM_CHARSET $LANG
 #+end_src
 *** =01-xdg_base_directory.tcsh=
-#+begin_src csh :tangle ~/.config/profile.d/01-xdg_base_directory.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/01-xdg_base_directory.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/01-xdg_base_directory.tcsh
       # XDG Base Directory specification
       # https://wiki.archlinux.org/index.php/XDG_BASE_Directory_support
@@ -1251,7 +1251,7 @@
       if ( ! -d ${GTK2_RC_FILES:h} ) mkdir -p ${GTK2_RC_FILES:h}
 #+end_src
 *** 02-editors.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/01-editors.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/01-editors.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/02-editors.tcsh
       # ${EDITOR}, ${VISUAL} and ${ALTERNATE_EDITOR}
       # <alexforsale@yahoo.com>
@@ -1304,7 +1304,7 @@
       unset editor
 #+end_src
 *** 03-terminals.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/03-terminal.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/03-terminal.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/03-terminal.tcsh
       # ${TERMINAL} apps
       # <alexforsale@yahoo.com>
@@ -1320,7 +1320,7 @@
       unset terminal
 #+end_src
 *** 04-security.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/04-security.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/04-security.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/04-security.tcsh
       # various security apps
       # <alexforsale@yahoo.com>
@@ -1358,7 +1358,7 @@
       endif
 #+end_src
 *** 05-filemanagers.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/05-filemanagers.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/05-filemanagers.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/05-filemanagers.tcsh
       # filemanager configuration
       # <alexforsale@yahoo.com>
@@ -1372,7 +1372,7 @@
       unset fileman
 #+end_src
 *** 06-browsers.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/06-browser.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/06-browser.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/06-browser.tcsh
       # ${BROWSER} configuration
       # <alexforsale@yahoo.com>
@@ -1395,7 +1395,7 @@
       endif
 #+end_src
 *** 07-mail.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/07-mail_apps.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/07-mail_apps.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/07-mail_apps.tcsh
       # ${MAIL_APP} configuration
       # <alexforsale@yahoo.com>
@@ -1408,7 +1408,7 @@
       unset mail
 #+end_src
 *** 08-themes.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/10-themes.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/10-themes.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/10-themes.tcsh
       # themes configuration
       # <alexforsale@yahoo.com>
@@ -1430,7 +1430,7 @@
       setenv GTK_THEME "Arc-Dark"
 #+end_src
 *** 99-cargo.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-cargo.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-cargo.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-cargo.tcsh
       # cargo configuration
       # https://wiki.archlinux.org/index.php/Rust#Cargo
@@ -1438,7 +1438,7 @@
       if ( -d ${HOME}/.cargo/bin ) setenv PATH ${HOME}/.cargo/bin:${PATH}
 #+end_src
 *** 99-ccache.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-ccache.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-ccache.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-ccache.tcsh
       # ccache configuration
       # <alexforsale@yahoo.com>
@@ -1454,7 +1454,7 @@
       endsw
 #+end_src
 *** 99-elinks.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-elinks.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-elinks.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-elinks.tcsh
       # configuration for elinks
       # <alexforsale@yahoo.com>
@@ -1469,7 +1469,7 @@
       endif
 #+end_src
 *** 99-fortune.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-fortune.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-fortune.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-fortune.tcsh
       # configuration for fortune
       # <alexforsale@yahoo.com>
@@ -1488,7 +1488,7 @@
       endsw
 #+end_src
 *** 99-go.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-go.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-go.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-go.tcsh
       # $GOPATH configuration
       # set GOPATH to ~/.local so we don't need
@@ -1500,7 +1500,7 @@
       endif
 #+end_src
 *** 99-htop.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-htop.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-htop.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-htop.tcsh
       # <alexforsale@yahoo.com>
 
@@ -1510,7 +1510,7 @@
       endif
 #+end_src
 *** 99-nano.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-nano.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-nano.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-nano.tcsh
       # see https://nano-editor.org
       # <alexforsale@yahoo.com>
@@ -1520,7 +1520,7 @@
       endif
 #+end_src
 *** 99-npm.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-npm.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-npm.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-npm.tcsh
       # node packaged module configuration
       # see https://wiki.archlinux.org/index.php/Node.js
@@ -1530,7 +1530,7 @@
       endif
 #+end_src
 *** 99-perl.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-perl.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-perl.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-perl.tcsh
       # configuration for perl
       # <alexforsale@yahoo.com>
@@ -1555,7 +1555,7 @@
       setenv PERL_MM_OPT "INSTALL_BASE=${HOME}/.local/perl5"
 #+end_src
 *** 99-ruby.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-ruby.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-ruby.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-ruby.tcsh
       # ruby configuration
       # <alexforsale@yahoo.com>
@@ -1564,7 +1564,7 @@
       endif
 #+end_src
 *** 99-screen.tcsh
-#+begin_src csh :tangle ~/.config/profile.d/99-screen.tcsh :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/profile.d/99-screen.tcsh :shebang #!/usr/bin/env tcsh
       # ~/.config/profile.d/99-screen.tcsh
       # configuration for GNU Screen
       # <alexforsale@yahoo.com>
@@ -1585,7 +1585,7 @@
 #+end_src
 ** tcsh
 *** aliases.tcsh
-#+begin_src csh :tangle ~/.config/tcsh/aliases.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/tcsh/aliases.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
       # <alexforsale@yahoo.com>
       # tcsh aliases file
 
@@ -1598,7 +1598,7 @@
       alias	rd	rmdir
 #+end_src
 *** bindkey.tcsh
-#+begin_src csh :tangle ~/.config/tcsh/bindkey.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/tcsh/bindkey.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
       # <alexforsale@yahoo.com>
       # tcsh keybinding file
 
@@ -1611,7 +1611,7 @@
       endif
 #+end_src
 *** options.tcsh
-#+begin_src csh :tangle ~/.config/tcsh/options.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/tcsh/options.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
       # <alexforsale@yahoo.com>
       # various tcsh options
 
@@ -1647,7 +1647,7 @@
       endif
 #+end_src
 *** prompt.tcsh
-#+begin_src csh :tangle ~/.config/tcsh/prompt.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
+#+begin_src csh :tangle .config/tcsh/prompt.tcsh :mkdirp t :shebang #!/usr/bin/env tcsh
       # prompt
       #  %/  The current working directory.
       #  %~  The current working directory, but with one's home
@@ -1743,13 +1743,13 @@
 #+end_src
 * zsh
 ** .zshenv
-#+begin_src sh :tangle ~/.zshenv :shebang #!/usr/bin/env zsh
+#+begin_src sh :tangle .zshenv :shebang #!/usr/bin/env zsh
   [ -z "${ZDOTDIR}" ] && export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 #+end_src
 ** ~/.config/zsh
 *** .zshrc
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zshrc :shebang #!/usr/bin/env zsh :mkdirp t
+:header-args: :tangle .config/zsh/.zshrc :shebang #!/usr/bin/env zsh :mkdirp t
 :END:
 **** config
 #+begin_src sh
@@ -1772,7 +1772,7 @@
 #+end_src
 *** .zprofile
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zprofile :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/.zprofile :shebang #!/usr/bin/env zsh
 :END:
 **** config
 #+begin_src sh
@@ -1780,7 +1780,7 @@
 #+end_src
 *** .zlogout
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zlogout :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/.zlogout :shebang #!/usr/bin/env zsh
 :END:
 **** config
 #+begin_src sh
@@ -1794,7 +1794,7 @@
 #+end_src
 *** .zlogin
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zlogin :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/.zlogin :shebang #!/usr/bin/env zsh
 :END:
 **** config
 #+begin_src sh
@@ -1811,7 +1811,7 @@
 ** ~/.config/zsh/conf.d
 *** 20-completions.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/20-completions.zsh :shebang #!/usr/bin/env zsh :mkdirp t
+:header-args: :tangle .config/zsh/conf.d/20-completions.zsh :shebang #!/usr/bin/env zsh :mkdirp t
 :END:
 **** header
 #+begin_src sh
@@ -1847,7 +1847,7 @@
 #+end_src
 *** 20-modules.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/20-modules.zsh :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/conf.d/20-modules.zsh :shebang #!/usr/bin/env zsh
 :END:
 **** header
 #+begin_src sh
@@ -1865,7 +1865,7 @@
 #+end_src
 *** 20-styles.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/20-styles.zsh :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/conf.d/20-styles.zsh :shebang #!/usr/bin/env zsh
 :END:
 **** header
 #+begin_src sh
@@ -1915,7 +1915,7 @@
 #+end_src
 *** 21-bindings.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/21-bindings.zsh :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/conf.d/21-bindings.zsh :shebang #!/usr/bin/env zsh
 :END:
 **** header
 #+begin_src sh
@@ -1935,7 +1935,7 @@
 #+end_src
 *** 30-aliases.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/30-aliases.zsh :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/conf.d/30-aliases.zsh :shebang #!/usr/bin/env zsh
 :END:
 **** header
 #+begin_src sh
@@ -1955,7 +1955,7 @@
 #+end_src
 *** 30-history.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/30-history.zsh :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/conf.d/30-history.zsh :shebang #!/usr/bin/env zsh
 :END:
 **** header
 #+begin_src sh
@@ -1981,7 +1981,7 @@
 #+end_src
 *** 99-others.zsh
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/conf.d/99-others.zsh :shebang #!/usr/bin/env zsh
+:header-args: :tangle .config/zsh/conf.d/99-others.zsh :shebang #!/usr/bin/env zsh
 :END:
 **** header
 #+begin_src sh
