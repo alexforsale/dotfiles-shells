@@ -4,7 +4,10 @@
 # <alexforsale@yahoo.com>
 
 if [ "$(command -v emacs)" ] &&
-       [ -e ~/.emacs.d/bin/doom ];then
-   [ ! $(command -v doom) ] &&
-       export PATH=${PATH}:~/.emacs.d/bin
+    [ -e "${HOME}"/.emacs.d/bin/doom ]; then
+    [ ! "$(command -v doom)" ] &&
+        export PATH="${PATH}:${HOME}/.emacs.d/bin"
+elif [ -e "${HOME}/.config/doom/bin/doom" ]; then
+    [ ! "$(command -v doom)" ] &&
+        export PATH="${PATH}/.config/doom/bin"
 fi
