@@ -3,6 +3,7 @@
 # configuration for F#
 # <alexforsale@yahoo.com>
 
-if [[ -d "${HOME}/.dotnet/tools" ]]; then
+if [[ -d "${HOME}/.dotnet/tools" ]] &&
+       [[ $(command -v dotnet) ]]; then
     export PATH="${PATH}:${HOME}/.dotnet/tools"
 fi
