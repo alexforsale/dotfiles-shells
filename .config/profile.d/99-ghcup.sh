@@ -8,3 +8,4 @@
 if [ -d "${HOME}/.ghcup/bin" ]; then
     contains "${PATH}" "${HOME}/.ghcup/bin" ||
         export PATH="${HOME}/.ghcup/bin:${PATH}"
+fi
