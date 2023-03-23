@@ -30,4 +30,7 @@ else
     DISTROVER="$(uname -r)"
 fi
 
+# set helper functions here for now
+contains() { case "$1" in *"$2"*) true ;; *) false ;; esac }
+
 export DISTRO DISTROVER
