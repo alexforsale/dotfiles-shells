@@ -25,3 +25,5 @@ if [ -d "${HOME}/.guix-profile/share/emacs/site-lisp" ]; then
     contains "${XDG_DATA_DIRS}" "${HOME}/.guix-profile/share" ||
       export XDG_DATA_DIRS="${HOME}/.guix-profile/share:${XDG_DATA_DIRS}"
 fi
+
+export QT_XCB_GL_INTEGRATION=none
