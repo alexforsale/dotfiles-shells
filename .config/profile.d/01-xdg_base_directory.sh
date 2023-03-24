@@ -80,9 +80,14 @@ for dir in "${XDG_DESKTOP_DIR}" "${XDG_DOWNLOAD_DIR}" "${XDG_TEMPLATES_DIR}" \
 done
 unset dir
 
-if [ -n "${GUIX_LOCPATH}" ] ||
-  [ "${DISTRO}" = "guix" ]; then
-  [ -d "${HOME}/.nix-profile/share" ] && export XDG_DATA_DIRS="${XDG_DATA_DIRS}:${HOME}/.nix-profile/share"
+if [ -d /usr/share ]; then
+    contains "${XDG_DATA_DIRS}" "/usr/share" ||
+        export XDG_DATA_DIRS="/usr/share"
+fi
+
+if [ -d /usr/local/share ]; then
+    contains "${XDG_DATA_DIRS}" "/usr/local/share" ||
+        export XDG_DATA_DIRS="${XDG_DATA_DIRS}:/usr/local/share"
 fi
 
 export XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
