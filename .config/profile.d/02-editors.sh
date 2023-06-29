@@ -21,12 +21,12 @@ if [ "$(command -v emacs)" ]; then
             mkdir -p ~/Documents/org
     fi
     export ALTERNATE_EDITOR=${VISUAL}
-    if [ -z "${EMACSLOADPATH}" ]; then
-        [ -d /usr/share/emacs/site-lisp ] &&
-            export EMACSLOADPATH=/usr/share/emacs/site-lisp
-        [ -d /usr/local/share/emacs/site-lisp ] &&
-            export EMACSLOADPATH="${EMACSLOADPATH}:/usr/local/share/emacs/site-lisp"
-    fi
+#    if [ -z "${EMACSLOADPATH}" ]; then
+#        [ -d /usr/share/emacs/site-lisp ] &&
+#            export EMACSLOADPATH=/usr/share/emacs/site-lisp
+#        [ -d /usr/local/share/emacs/site-lisp ] &&
+#            export EMACSLOADPATH="${EMACSLOADPATH}:/usr/local/share/emacs/site-lisp"
+#    fi
 elif [ "$(command -v gvim)" ]; then # in case it's available, I don't use much of this
     export EDITOR="${EDITOR:-vim}"  # this should also installed
     export VISUAL="${VISUAL:-gvim}"

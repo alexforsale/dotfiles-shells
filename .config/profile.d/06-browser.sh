@@ -6,6 +6,8 @@
 # Browser
 if [ "$(command -v google-chrome-stable)" ]; then
     export BROWSER=${BROWSER:-google-chrome-stable}
+elif [ "$(command -v brave)" ]; then
+    export BROWSER=${BROWSER:-brave}
 elif [ "$(command -v midori)" ]; then
     export BROWSER=${BROWSER:-midori}
 elif [ "$(command -v qutebrowser)" ]; then
