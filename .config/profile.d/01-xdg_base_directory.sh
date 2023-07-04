@@ -57,7 +57,7 @@ fi
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
   # differs per distro
   #DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
-  eval `dbus-launch --sh-syntax`
+  `command -v dbus-launch` && eval `dbus-launch --sh-syntax`
 fi
 
 # XDG User Directories
