@@ -10,5 +10,5 @@ fi
 
 # pyenv
 if [ $(command -v pyenv) ]; then
-    eval "$(pyenv --init -)"
+    eval "$(pyenv init -)"
 fi
