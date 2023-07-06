@@ -12,8 +12,6 @@ if [ -d "${HOME}/.config/nvm" ]; then
     if [ -n "${npm_config_prefix}" ]; then
         unset npm_config_prefix
     fi
-fi
-
-if [ "$(command -v npm)" ];then
+elif [ "$(command -v npm)" ] && [ ! "$(command -v nvm)" ]; then
    export npm_config_prefix="${HOME}/.local"
 fi
