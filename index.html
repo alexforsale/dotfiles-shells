@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-03-12 Tue 07:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Common Shell initialization files</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Kristian Alexander P" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Common Shell initialization files</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge428ce4">1. <code>.shrc</code></a></li>
+<li><a href="#org4661367">2. <code>.login</code></a></li>
+<li><a href="#orgd822572">3. <code>.logout</code></a></li>
+<li><a href="#orgccab568">4. <code>.profile</code></a>
+<ul>
+<li><a href="#orgf234a47">4.1. Modules</a>
+<ul>
+<li><a href="#orgf36382a">4.1.1. distro</a></li>
+<li><a href="#orgf9d1c85">4.1.2. locale</a></li>
+<li><a href="#orgbd1f2d5">4.1.3. xdg-base-directory</a></li>
+<li><a href="#org1bb35d0">4.1.4. editors</a></li>
+<li><a href="#org661ce63">4.1.5. terminals</a></li>
+<li><a href="#org0fb33e1">4.1.6. security</a></li>
+<li><a href="#org4cda004">4.1.7. file managers</a></li>
+<li><a href="#orga5fb66d">4.1.8. browser</a></li>
+<li><a href="#orga8115cf">4.1.9. mail apps</a></li>
+<li><a href="#orgd0b1596">4.1.10. themes</a></li>
+<li><a href="#orgf6d7c11">4.1.11. cargo</a></li>
+<li><a href="#orgafc2095">4.1.12. ccache</a></li>
+<li><a href="#orgd8eee08">4.1.13. composer</a></li>
+<li><a href="#orgc05a345">4.1.14. dash</a></li>
+<li><a href="#org6c877f0">4.1.15. doom emacs</a></li>
+<li><a href="#org45fa695">4.1.16. elinks</a></li>
+<li><a href="#orgb9f90e0">4.1.17. emacs vterm</a></li>
+<li><a href="#orgdd8463f">4.1.18. freeBSD</a></li>
+<li><a href="#orgafb458a">4.1.19. fsharp</a></li>
+<li><a href="#org79df817">4.1.20. ghcup</a></li>
+<li><a href="#org2c0c8c4">4.1.21. go</a></li>
+<li><a href="#org048273b">4.1.22. guix</a></li>
+<li><a href="#org5ab1a68">4.1.23. nano</a></li>
+<li><a href="#orgaafd597">4.1.24. nix</a></li>
+<li><a href="#orgb36269f">4.1.25. npm</a></li>
+<li><a href="#orgf316dd2">4.1.26. password-store</a></li>
+<li><a href="#org0d348db">4.1.27. perl</a></li>
+<li><a href="#org4ecb1ee">4.1.28. python</a></li>
+<li><a href="#org35b7872">4.1.29. ruby</a></li>
+<li><a href="#org2dc7484">4.1.30. screen</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge428ce4" class="outline-2">
+<h2 id="orge428ce4"><span class="section-number-2">1</span> <code>.shrc</code></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Taken from <i>FreeBSD</i>.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">$FreeBSD$</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">.shrc - bourne shell startup file</span>
+<span class="linenr"> 4: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">This file will be used if the shell is invoked for interactive use and</span>
+<span class="linenr"> 6: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">the environment variable ENV is set to this file.</span>
+<span class="linenr"> 7: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 8: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">see also sh(1), environ(7).</span>
+<span class="linenr"> 9: </span><span style="color: #b22222;">#</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">file permissions: rwxr-xr-x</span>
+<span class="linenr">12: </span><span style="color: #b22222;">#</span>
+<span class="linenr">13: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">umask 022</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Uncomment this to enable the builtin vi(1) command line editor in sh(1),</span>
+<span class="linenr">16: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">e.g. ESC to go into visual mode.</span>
+<span class="linenr">17: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">set -o vi</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span><span style="color: #4169e1;">if</span> ([ <span style="color: #bc8f8f;">"${SHELL}"</span> != <span style="color: #bc8f8f;">"/bin/sh"</span> ] &amp;&amp; [ <span style="color: #bc8f8f;">"${SHELL}"</span> != <span style="color: #bc8f8f;">"/bin/dash"</span> ]);<span style="color: #4169e1;">then</span>
+<span class="linenr">20: </span>   <span style="color: #4169e1;">return</span>
+<span class="linenr">21: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">22: </span>
+<span class="linenr">23: </span>alias <span style="color: #b8860b;">h</span>=<span style="color: #bc8f8f;">'fc -l'</span>
+<span class="linenr">24: </span>alias <span style="color: #b8860b;">j</span>=jobs
+<span class="linenr">25: </span>alias <span style="color: #b8860b;">m</span>=<span style="color: #bc8f8f;">"$PAGER"</span>
+<span class="linenr">26: </span>alias <span style="color: #b8860b;">ll</span>=<span style="color: #bc8f8f;">'ls -laFo'</span>
+<span class="linenr">27: </span>alias <span style="color: #b8860b;">l</span>=<span style="color: #bc8f8f;">'ls -l'</span>
+<span class="linenr">28: </span>alias <span style="color: #b8860b;">g</span>=<span style="color: #bc8f8f;">'egrep -i'</span>
+<span class="linenr">29: </span>
+<span class="linenr">30: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"># be paranoid</span>
+<span class="linenr">31: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alias cp='cp -ip'</span>
+<span class="linenr">32: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alias mv='mv -i'</span>
+<span class="linenr">33: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alias rm='rm -i'</span>
+<span class="linenr">34: </span>
+<span class="linenr">35: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">set prompt: ``username@hostname:directory $ ''</span>
+<span class="linenr">36: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"${DISTRO}"</span> = <span style="color: #bc8f8f;">"freebsd"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">37: </span>    <span style="color: #b8860b;">PS1</span>=<span style="color: #bc8f8f;">"\u@\h:\w \\$ "</span>
+<span class="linenr">38: </span><span style="color: #4169e1;">else</span>
+<span class="linenr">39: </span>    <span style="color: #b8860b;">PS1</span>=<span style="color: #bc8f8f;">"${USER}@${HOSTNAME}:\${PWD} $ "</span>
+<span class="linenr">40: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">41: </span>
+<span class="linenr">42: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">search path for cd(1)</span>
+<span class="linenr">43: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">CDPATH=:$HOME</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4661367" class="outline-2">
+<h2 id="org4661367"><span class="section-number-2">2</span> <code>.login</code></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Used by <code>csh</code> and <code>tcsh</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">-*- mode: sh -*-</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">$FreeBSD$</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 4: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">.login - csh login script, read by login shell, after `.cshrc' at login.</span>
+<span class="linenr"> 5: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 6: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">See also csh(1), environ(7).</span>
+<span class="linenr"> 7: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Query terminal size; useful for serial lines.</span>
+<span class="linenr">10: </span><span style="color: #4169e1;">if</span> ( -x /usr/bin/resizewin ) /usr/bin/resizewin -z
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd822572" class="outline-2">
+<h2 id="orgd822572"><span class="section-number-2">3</span> <code>.logout</code></h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">-*- mode: sh -*-</span>
+<span class="linenr">2: </span><span style="color: #b22222;">#</span>
+<span class="linenr">3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">.logout - csh logout script</span>
+<span class="linenr">4: </span><span style="color: #b22222;">#</span>
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #4169e1;">if</span> ( -x <span style="font-weight: bold;">`which clear`</span> ) clear
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgccab568" class="outline-2">
+<h2 id="orgccab568"><span class="section-number-2">4</span> <code>.profile</code></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Used by various shells.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.profile</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Environment and startup programs.</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">source /etc/profile if exist.</span>
+<span class="linenr"> 4: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 5: </span><span style="color: #b22222;">#</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span>[ -f /etc/profile ] &amp;&amp; . /etc/profile
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">this goes first in case others needs it.</span>
+<span class="linenr">10: </span><span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/bin"</span> ] ; <span style="color: #4169e1;">then</span>
+<span class="linenr">11: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/bin:${PATH}"</span>
+<span class="linenr">12: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">13: </span><span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"$HOME/.local/bin"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr">14: </span>   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/.local/bin:${PATH}"</span>
+<span class="linenr">15: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Loads user profiles if exists. Should be in ~/.profile.d</span>
+<span class="linenr">18: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">but let's not pollute ~ anymore.</span>
+<span class="linenr">19: </span>
+<span class="linenr">20: </span><span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.config/profile.d"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">21: </span>    <span style="color: #4169e1;">for</span> profile<span style="color: #4169e1;"> in</span> <span style="color: #bc8f8f;">"${HOME}"</span>/.config/profile.d/*.sh; <span style="color: #4169e1;">do</span>
+<span class="linenr">22: </span>        . <span style="color: #bc8f8f;">"${profile}"</span>
+<span class="linenr">23: </span>    <span style="color: #4169e1;">done</span>
+<span class="linenr">24: </span>    <span style="color: #00008b;">unset</span> profile
+<span class="linenr">25: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span><span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${PATH}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">28: </span>    <span style="color: #b8860b;">old_PATH</span>=${<span style="color: #b8860b;">PATH</span>}:; <span style="color: #b8860b;">PATH</span>=
+<span class="linenr">29: </span>    <span style="color: #4169e1;">while</span> [ -n <span style="color: #bc8f8f;">"${old_PATH}"</span> ]; <span style="color: #4169e1;">do</span>
+<span class="linenr">30: </span>        <span style="color: #b8860b;">x</span>=${<span style="color: #b8860b;">old_PATH</span>%%:*}       <span style="color: #b22222;"># </span><span style="color: #b22222;">the first remaining entry</span>
+<span class="linenr">31: </span>        <span style="color: #4169e1;">case</span> ${<span style="color: #b8860b;">PATH</span>}:<span style="color: #4169e1;"> in</span>
+<span class="linenr">32: </span>            *:<span style="color: #bc8f8f;">"$x"</span>:*) ;;         <span style="color: #b22222;"># </span><span style="color: #b22222;">already there</span>
+<span class="linenr">33: </span>            *) <span style="color: #b8860b;">PATH</span>=${<span style="color: #b8860b;">PATH</span>}:$<span style="color: #b8860b;">x</span>;;    <span style="color: #b22222;"># </span><span style="color: #b22222;">not there yet</span>
+<span class="linenr">34: </span>        <span style="color: #4169e1;">esac</span>
+<span class="linenr">35: </span>        <span style="color: #b8860b;">old_PATH</span>=${<span style="color: #b8860b;">old_PATH</span>#*:}
+<span class="linenr">36: </span>    <span style="color: #4169e1;">done</span>
+<span class="linenr">37: </span>    <span style="color: #b8860b;">PATH</span>=${<span style="color: #b8860b;">PATH</span>#:}
+<span class="linenr">38: </span>    <span style="color: #00008b;">unset</span> old_PATH x
+<span class="linenr">39: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">40: </span>
+<span class="linenr">41: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">local ~/.profile</span>
+<span class="linenr">42: </span><span style="color: #4169e1;">if</span> [ -r <span style="color: #bc8f8f;">"${HOME}"</span>/.config/profile.local ];<span style="color: #4169e1;">then</span>
+<span class="linenr">43: </span>   . <span style="color: #bc8f8f;">"${HOME}"</span>/.config/profile.local
+<span class="linenr">44: </span>   <span style="color: #4169e1;">elif</span> [ -r <span style="color: #bc8f8f;">"${HOME}"</span>/.profile.local ];<span style="color: #4169e1;">then</span>
+<span class="linenr">45: </span>        . <span style="color: #bc8f8f;">"${HOME}"</span>/.profile.local
+<span class="linenr">46: </span>   <span style="color: #4169e1;">fi</span>
+<span class="linenr">47: </span>
+<span class="linenr">48: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">if running bash</span>
+<span class="linenr">49: </span><span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${BASH_VERSION}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">50: </span>    <span style="color: #b22222;"># </span><span style="color: #b22222;">include .bashrc if it exists</span>
+<span class="linenr">51: </span>    <span style="color: #4169e1;">if</span> [ -f <span style="color: #bc8f8f;">"${HOME}/.bashrc"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">52: </span>        . <span style="color: #bc8f8f;">"${HOME}/.bashrc"</span>
+<span class="linenr">53: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">54: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf234a47" class="outline-3">
+<h3 id="orgf234a47"><span class="section-number-3">4.1</span> Modules</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-orgf36382a" class="outline-4">
+<h4 id="orgf36382a"><span class="section-number-4">4.1.1</span> distro</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/00-distro.sh</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">set distro environment</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">set DISTRO and DISTROVER</span>
+<span style="color: #4169e1;">if</span> [ -f /etc/os-release ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">freedesktop.org and systemd</span>
+    . /etc/os-release
+    <span style="color: #b8860b;">DISTRO</span>=<span style="color: #bc8f8f;">"${ID}"</span>
+    <span style="color: #b8860b;">DISTROVER</span>=<span style="color: #bc8f8f;">"${VERSION_ID}"</span>
+    [ -z <span style="color: #bc8f8f;">"${DISTROVER}"</span> ] &amp;&amp;
+        <span style="color: #b8860b;">DISTROVER</span>=<span style="color: #bc8f8f;">"${BUILD_ID}"</span>
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v lsb_release &gt;/dev/null)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">linuxbase.org</span>
+    <span style="color: #b8860b;">DISTRO</span>=<span style="color: #bc8f8f;">"$(lsb_release -si | awk '{print tolower ($0)}')"</span>
+    <span style="color: #b8860b;">DISTROVER</span>=<span style="color: #bc8f8f;">"$(lsb_release -sr | awk '{print tolower ($0)}')"</span>
+<span style="color: #4169e1;">elif</span> [ -f /etc/lsb-release ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">For some versions of Debian/Ubuntu without lsb_release command</span>
+    . /etc/lsb-release
+    <span style="color: #b8860b;">DISTRO</span>=<span style="color: #bc8f8f;">"${DISTRIB_ID}"</span>
+    <span style="color: #b8860b;">DISTROVER</span>=<span style="color: #bc8f8f;">"${DISTRIB_RELEASE}"</span>
+<span style="color: #4169e1;">elif</span> [ -f /etc/debian_version ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">Older Debian/Ubuntu/etc.</span>
+    <span style="color: #b8860b;">DISTRO</span>=Debian
+    <span style="color: #b8860b;">DISTROVER</span>=<span style="color: #bc8f8f;">"$(cat /etc/debian_version)"</span>
+<span style="color: #4169e1;">else</span>
+    <span style="color: #b22222;"># </span><span style="color: #b22222;">Fall back to uname, e.g. "Linux &lt;version&gt;", also works for BSD, etc.</span>
+    <span style="color: #b8860b;">DISTRO</span>=<span style="color: #bc8f8f;">"$(uname -s)"</span>
+    <span style="color: #b8860b;">DISTROVER</span>=<span style="color: #bc8f8f;">"$(uname -r)"</span>
+<span style="color: #4169e1;">fi</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">set helper functions here for now</span>
+<span style="color: #0000ff;">contains</span>() { <span style="color: #4169e1;">case</span> <span style="color: #bc8f8f;">"$1"</span><span style="color: #4169e1;"> in</span> *<span style="color: #bc8f8f;">"$2"</span>*) true ;; *) false ;; <span style="color: #4169e1;">esac</span> }
+
+<span style="color: #00008b;">export</span> DISTRO DISTROVER
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9d1c85" class="outline-4">
+<h4 id="orgf9d1c85"><span class="section-number-4">4.1.2</span> locale</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/00-locale.sh</span>
+<span class="linenr">2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">locale settings</span>
+<span class="linenr">3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">language</span>
+<span class="linenr">6: </span>[ -z <span style="color: #bc8f8f;">"${LANG}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">LANG</span>=en_US.UTF-8
+<span class="linenr">7: </span>[ -z <span style="color: #bc8f8f;">"${MM_CHARSET}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MM_CHARSET</span>=en_US.UTF-8
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd1f2d5" class="outline-4">
+<h4 id="orgbd1f2d5"><span class="section-number-4">4.1.3</span> xdg-base-directory</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/01-xdg_base_directory.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">XDG Base Directory specification</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">https://wiki.archlinux.org/index.php/XDG_BASE_Directory_support</span>
+<span class="linenr"> 4: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #4169e1;">if</span> [ -z <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>  <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.config"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 8: </span>    mkdir -p <span style="color: #bc8f8f;">"${HOME}/.config"</span>
+<span class="linenr"> 9: </span>  <span style="color: #4169e1;">fi</span>
+<span class="linenr">10: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #b8860b;">XDG_CONFIG_HOME</span>=<span style="color: #bc8f8f;">"${HOME}/.config"</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #4169e1;">if</span> [ -z <span style="color: #bc8f8f;">"${XDG_CACHE_HOME}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">15: </span>  <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.cache"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">16: </span>    mkdir -p <span style="color: #bc8f8f;">"${HOME}/.cache"</span>
+<span class="linenr">17: </span>  <span style="color: #4169e1;">fi</span>
+<span class="linenr">18: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">19: </span>
+<span class="linenr">20: </span><span style="color: #b8860b;">XDG_CACHE_HOME</span>=<span style="color: #bc8f8f;">"${HOME}/.cache"</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #4169e1;">if</span> [ -z <span style="color: #bc8f8f;">"${XDG_DATA_HOME}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">23: </span>  <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.local/share"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">24: </span>    mkdir -p <span style="color: #bc8f8f;">"${HOME}/.local/share"</span>
+<span class="linenr">25: </span>  <span style="color: #4169e1;">fi</span>
+<span class="linenr">26: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">27: </span>
+<span class="linenr">28: </span><span style="color: #b8860b;">XDG_DATA_HOME</span>=<span style="color: #bc8f8f;">"${HOME}/.local/share"</span>
+<span class="linenr">29: </span>
+<span class="linenr">30: </span><span style="color: #4169e1;">if</span> [ -z <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">31: </span>  <span style="color: #4169e1;">case</span> <span style="color: #bc8f8f;">"${DISTRO}"</span><span style="color: #4169e1;"> in</span>
+<span class="linenr">32: </span>    <span style="color: #bc8f8f;">"gentoo"</span>)
+<span class="linenr">33: </span>      <span style="color: #b8860b;">XDG_RUNTIME_DIR</span>=<span style="color: #bc8f8f;">"/tmp/$(id -u)-runtime-dir"</span>
+<span class="linenr">34: </span>      <span style="color: #4169e1;">if</span> [ ! -d <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr">35: </span>        mkdir -p <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span>
+<span class="linenr">36: </span>        chmod 0700 <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span>
+<span class="linenr">37: </span>      <span style="color: #4169e1;">fi</span>
+<span class="linenr">38: </span>      ;;
+<span class="linenr">39: </span>    <span style="color: #bc8f8f;">"arch"</span>)
+<span class="linenr">40: </span>      <span style="color: #b8860b;">XDG_RUNTIME_DIR</span>=<span style="color: #bc8f8f;">"/run/user/$(id -u)"</span>
+<span class="linenr">41: </span>      <span style="color: #4169e1;">if</span> [ ! -d <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr">42: </span>        mkdir -p <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span>
+<span class="linenr">43: </span>        chmod 0700 <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span>
+<span class="linenr">44: </span>      <span style="color: #4169e1;">fi</span>
+<span class="linenr">45: </span>      ;;
+<span class="linenr">46: </span>    <span style="color: #bc8f8f;">"freebsd"</span>)
+<span class="linenr">47: </span>      <span style="color: #b8860b;">XDG_RUNTIME_DIR</span>=<span style="color: #bc8f8f;">"/tmp/$(id -u)-runtime-dir"</span>
+<span class="linenr">48: </span>      <span style="color: #4169e1;">if</span> [ ! -d <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr">49: </span>        mkdir -p <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span>
+<span class="linenr">50: </span>        chmod 0700 <span style="color: #bc8f8f;">"${XDG_RUNTIME_DIR}"</span>
+<span class="linenr">51: </span>      <span style="color: #4169e1;">fi</span>
+<span class="linenr">52: </span>      ;;
+<span class="linenr">53: </span>  <span style="color: #4169e1;">esac</span>
+<span class="linenr">54: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">55: </span>
+<span class="linenr">56: </span><span style="color: #4169e1;">if</span> [ -z <span style="color: #bc8f8f;">"$DBUS_SESSION_BUS_ADDRESS"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">57: </span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">differs per distro</span>
+<span class="linenr">58: </span>  <span style="color: #b22222;">#</span><span style="color: #b22222;">DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"</span>
+<span class="linenr">59: </span>  <span style="font-weight: bold;">`command -v dbus-launch`</span> &amp;&amp; <span style="color: #00008b;">eval</span> <span style="font-weight: bold;">`dbus-launch --sh-syntax`</span>
+<span class="linenr">60: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">61: </span>
+<span class="linenr">62: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">XDG User Directories</span>
+<span class="linenr">63: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">https://wiki.archlinux.org/index.php/XDG_user_directories</span>
+<span class="linenr">64: </span>[ -z <span style="color: #bc8f8f;">"${XDG_DESKTOP_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DESKTOP_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Desktop"</span>
+<span class="linenr">65: </span>[ -z <span style="color: #bc8f8f;">"${XDG_DOWNLOAD_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DOWNLOAD_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Downloads"</span>
+<span class="linenr">66: </span>[ -z <span style="color: #bc8f8f;">"${XDG_TEMPLATES_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_TEMPLATES_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Templates"</span>
+<span class="linenr">67: </span>[ -z <span style="color: #bc8f8f;">"${XDG_PUBLICSHARE_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_PUBLICSHARE_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Public"</span>
+<span class="linenr">68: </span>[ -z <span style="color: #bc8f8f;">"${XDG_DOCUMENTS_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DOCUMENTS_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Documents"</span>
+<span class="linenr">69: </span>[ -z <span style="color: #bc8f8f;">"${XDG_MUSIC_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_MUSIC_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Music"</span>
+<span class="linenr">70: </span>[ -z <span style="color: #bc8f8f;">"${XDG_PICTURES_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_PICTURES_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Pictures"</span>
+<span class="linenr">71: </span>[ -z <span style="color: #bc8f8f;">"${XDG_VIDEOS_DIR}"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_VIDEOS_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/Videos"</span>
+<span class="linenr">72: </span>
+<span class="linenr">73: </span><span style="color: #4169e1;">for</span> dir<span style="color: #4169e1;"> in</span> <span style="color: #bc8f8f;">"${XDG_DESKTOP_DIR}"</span> <span style="color: #bc8f8f;">"${XDG_DOWNLOAD_DIR}"</span> <span style="color: #bc8f8f;">"${XDG_TEMPLATES_DIR}"</span> <span style="color: #bc8f8f;">\</span>
+<span class="linenr">74: </span>  <span style="color: #bc8f8f;">"${XDG_PUBLICSHARE_DIR}"</span> <span style="color: #bc8f8f;">"${XDG_DOCUMENTS_DIR}"</span> <span style="color: #bc8f8f;">"${XDG_MUSIC_DIR}"</span> <span style="color: #bc8f8f;">\</span>
+<span class="linenr">75: </span>  <span style="color: #bc8f8f;">"${XDG_PICTURES_DIR}"</span> <span style="color: #bc8f8f;">"${XDG_VIDEOS_DIR}"</span>;<span style="color: #4169e1;">do</span>
+<span class="linenr">76: </span>  <span style="color: #4169e1;">if</span> [ ! -d <span style="color: #bc8f8f;">"${dir}"</span> ] || [ ! -L <span style="color: #bc8f8f;">"${dir}"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr">77: </span>    mkdir -p <span style="color: #bc8f8f;">"${dir}"</span> 2&gt;/dev/null
+<span class="linenr">78: </span>  <span style="color: #4169e1;">fi</span>
+<span class="linenr">79: </span><span style="color: #4169e1;">done</span>
+<span class="linenr">80: </span><span style="color: #00008b;">unset</span> dir
+<span class="linenr">81: </span>
+<span class="linenr">82: </span><span style="color: #4169e1;">if</span> [ -d /usr/share ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">83: </span>    contains <span style="color: #bc8f8f;">"${XDG_DATA_DIRS}"</span> <span style="color: #bc8f8f;">"/usr/share"</span> ||
+<span class="linenr">84: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DATA_DIRS</span>=<span style="color: #bc8f8f;">"/usr/share"</span>
+<span class="linenr">85: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">86: </span>
+<span class="linenr">87: </span><span style="color: #4169e1;">if</span> [ -d /usr/local/share ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">88: </span>    contains <span style="color: #bc8f8f;">"${XDG_DATA_DIRS}"</span> <span style="color: #bc8f8f;">"/usr/local/share"</span> ||
+<span class="linenr">89: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DATA_DIRS</span>=<span style="color: #bc8f8f;">"${XDG_DATA_DIRS}:/usr/local/share"</span>
+<span class="linenr">90: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">91: </span>
+<span class="linenr">92: </span><span style="color: #00008b;">export</span> XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1bb35d0" class="outline-4">
+<h4 id="org1bb35d0"><span class="section-number-4">4.1.4</span> editors</h4>
+<div class="outline-text-4" id="text-4-1-4">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/02-editors.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">${EDITOR}, ${VISUAL} and ${ALTERNATE_EDITOR}</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">chemacs-profile</span>
+<span class="linenr"> 6: </span><span style="color: #4169e1;">if</span> [ -e <span style="color: #bc8f8f;">"${HOME}/.config/chemacs/profile"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">CHEMACS_PROFILE</span>=<span style="color: #bc8f8f;">"$(cat ${HOME}/.config/chemacs/profile)"</span>
+<span class="linenr"> 8: </span><span style="color: #4169e1;">elif</span> [ -e <span style="color: #bc8f8f;">"${HOME}/.emacs-profile"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 9: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">CHEMACS_PROFILE</span>=<span style="color: #bc8f8f;">"$(cat ${HOME}/.emacs-profile)"</span>
+<span class="linenr">10: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">11: </span>
+<span class="linenr">12: </span>[ -n <span style="color: #bc8f8f;">"${CHEMACS_PROFILE}"</span> ] &amp;&amp; <span style="color: #b8860b;">emacs_args</span>=<span style="color: #bc8f8f;">"-s ${CHEMACS_PROFILE}"</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">see https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference</span>
+<span class="linenr">15: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v emacs)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">16: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">VISUAL</span>=<span style="color: #bc8f8f;">"${VISUAL:-emacsclient -c} ${emacs_args}"</span>
+<span class="linenr">17: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-emacsclient -t} ${emacs_args}"</span>
+<span class="linenr">18: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">ALTERNATE_EDITOR</span>=${<span style="color: #b8860b;">VISUAL</span>}
+<span class="linenr">19: </span><span style="color: #b22222;">#    </span><span style="color: #b22222;">if [ -z "${EMACSLOADPATH}" ]; then</span>
+<span class="linenr">20: </span><span style="color: #b22222;">#        </span><span style="color: #b22222;">[ -d /usr/share/emacs/site-lisp ] &amp;&amp;</span>
+<span class="linenr">21: </span><span style="color: #b22222;">#            </span><span style="color: #b22222;">export EMACSLOADPATH=/usr/share/emacs/site-lisp</span>
+<span class="linenr">22: </span><span style="color: #b22222;">#        </span><span style="color: #b22222;">[ -d /usr/local/share/emacs/site-lisp ] &amp;&amp;</span>
+<span class="linenr">23: </span><span style="color: #b22222;">#            </span><span style="color: #b22222;">export EMACSLOADPATH="${EMACSLOADPATH}:/usr/local/share/emacs/site-lisp"</span>
+<span class="linenr">24: </span><span style="color: #b22222;">#    </span><span style="color: #b22222;">fi</span>
+<span class="linenr">25: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v gvim)"</span> ]; <span style="color: #4169e1;">then</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">in case it's available, I don't use much of this</span>
+<span class="linenr">26: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-vim}"</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">this should also installed</span>
+<span class="linenr">27: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">VISUAL</span>=<span style="color: #bc8f8f;">"${VISUAL:-gvim}"</span>
+<span class="linenr">28: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">VIMINIT</span>=<span style="color: #bc8f8f;">"let \$MYVIMRC=\"${XDG_CONFIG_HOME}/vim/vimrc\" | source \${MYVIMRC}"</span>
+<span class="linenr">29: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v vim)"</span> ]; <span style="color: #4169e1;">then</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">most distro provide this (linux that is)</span>
+<span class="linenr">30: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-vim}"</span>
+<span class="linenr">31: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">VISUAL</span>=<span style="color: #bc8f8f;">"${VISUAL:-vim}"</span>
+<span class="linenr">32: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">VIMINIT</span>=<span style="color: #bc8f8f;">"let \$MYVIMRC=\"${XDG_CONFIG_HOME}/vim/vimrc\" | source \${MYVIMRC}"</span>
+<span class="linenr">33: </span>    mkdir -p <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/vim"</span>
+<span class="linenr">34: </span>    touch <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/vim/vimrc"</span>
+<span class="linenr">35: </span><span style="color: #4169e1;">else</span>
+<span class="linenr">36: </span>    [ $(command -v nvim) ] &amp;&amp;
+<span class="linenr">37: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-nvim}"</span>
+<span class="linenr">38: </span>
+<span class="linenr">39: </span>    [ $(command -v leafpad) ] &amp;&amp;
+<span class="linenr">40: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-leafpad}"</span>
+<span class="linenr">41: </span>
+<span class="linenr">42: </span>    [ $(command -v l3afpad) ] &amp;&amp;
+<span class="linenr">43: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-l3afpad}"</span>
+<span class="linenr">44: </span>
+<span class="linenr">45: </span>    [ $(command -v kate) ] &amp;&amp;
+<span class="linenr">46: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-kate}"</span>
+<span class="linenr">47: </span>
+<span class="linenr">48: </span>    [ $(command -v pluma) ] &amp;&amp;
+<span class="linenr">49: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-pluma}"</span>
+<span class="linenr">50: </span>
+<span class="linenr">51: </span>    [ $(command -v kwrite) ] &amp;&amp;
+<span class="linenr">52: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-kwrite}"</span>
+<span class="linenr">53: </span>
+<span class="linenr">54: </span>    [ $(command -v scribe) ] &amp;&amp;
+<span class="linenr">55: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-scribe}"</span>
+<span class="linenr">56: </span>
+<span class="linenr">57: </span>    [ $(command -v geany) ] &amp;&amp;
+<span class="linenr">58: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-geany}"</span>
+<span class="linenr">59: </span>
+<span class="linenr">60: </span>    [ $(command -v gedit) ] &amp;&amp;
+<span class="linenr">61: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-gedit}"</span>
+<span class="linenr">62: </span>
+<span class="linenr">63: </span>    [ $(command -v code) ] &amp;&amp;
+<span class="linenr">64: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-code}"</span>
+<span class="linenr">65: </span>
+<span class="linenr">66: </span>    <span style="color: #b22222;"># </span><span style="color: #b22222;">most unix os provide this,</span>
+<span class="linenr">67: </span>    [ $(command -v vi) ] &amp;&amp;
+<span class="linenr">68: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EDITOR</span>=<span style="color: #bc8f8f;">"${EDITOR:-vi}"</span>
+<span class="linenr">69: </span>
+<span class="linenr">70: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">VISUAL</span>=${<span style="color: #b8860b;">EDITOR</span>}
+<span class="linenr">71: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">ALTERNATE_EDITOR</span>=${<span style="color: #b8860b;">EDITOR</span>}
+<span class="linenr">72: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org661ce63" class="outline-4">
+<h4 id="org661ce63"><span class="section-number-4">4.1.5</span> terminals</h4>
+<div class="outline-text-4" id="text-4-1-5">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/03-terminal.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">${TERMINAL} apps</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Terminal apps</span>
+<span class="linenr"> 6: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v alacritty)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-alacritty}
+<span class="linenr"> 8: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v gnome-terminal)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 9: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-gnome-terminal}
+<span class="linenr">10: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v terminator)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">11: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-terminator}
+<span class="linenr">12: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v tilda)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">13: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-tilda}
+<span class="linenr">14: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v guake)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">15: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-guake}
+<span class="linenr">16: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v konsole)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">17: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-konsole}
+<span class="linenr">18: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v lxterminal)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">19: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-lxterminal}
+<span class="linenr">20: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v yakuake)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">21: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-yakuake}
+<span class="linenr">22: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v st)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">23: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-st}
+<span class="linenr">24: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v terminology)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">25: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-terminology}
+<span class="linenr">26: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v xfce4-terminal)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">27: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-xfce4-terminal}
+<span class="linenr">28: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v lilyterm)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">29: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-lilyterm}
+<span class="linenr">30: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v alacritty)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">31: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-alacritty}
+<span class="linenr">32: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v xterm)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">33: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-xterm}
+<span class="linenr">34: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v urxvt)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">35: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERMINAL</span>=${<span style="color: #b8860b;">TERMINAL</span>:-urxvt}
+<span class="linenr">36: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0fb33e1" class="outline-4">
+<h4 id="org0fb33e1"><span class="section-number-4">4.1.6</span> security</h4>
+<div class="outline-text-4" id="text-4-1-6">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/04-security.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">various security apps</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">from https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html</span>
+<span class="linenr"> 6: </span><span style="color: #00008b;">export</span> <span style="color: #b8860b;">GPG_TTY</span>=<span style="color: #bc8f8f;">"$(tty)"</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">https://wiki.gentoo.org/wiki/GnuPG#Automatically_starting_the_GPG_agent</span>
+<span class="linenr"> 9: </span><span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"$SSH_CONNECTION"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">10: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PINENTRY_USER_DATA</span>=<span style="color: #bc8f8f;">"USE_CURSES=1"</span>
+<span class="linenr">11: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">gpg-agent</span>
+<span class="linenr">14: </span><span style="color: #4169e1;">case</span> <span style="color: #bc8f8f;">"${DISTRO}"</span><span style="color: #4169e1;"> in</span>
+<span class="linenr">15: </span>    freebsd)
+<span class="linenr">16: </span>        <span style="color: #4169e1;">for</span> i<span style="color: #4169e1;"> in</span> curses gnome3 gtk2 qt5; <span style="color: #4169e1;">do</span>
+<span class="linenr">17: </span>            <span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v pinentry-${i})"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">18: </span>                <span style="color: #b8860b;">_PINENTRY</span>=<span style="color: #bc8f8f;">"$(command -v pinentry-${i})"</span>
+<span class="linenr">19: </span>            <span style="color: #4169e1;">else</span>
+<span class="linenr">20: </span>                <span style="color: #b8860b;">_PINENTRY</span>=<span style="color: #bc8f8f;">"$(command -v pinentry)"</span>
+<span class="linenr">21: </span>            <span style="color: #4169e1;">fi</span>
+<span class="linenr">22: </span>        <span style="color: #4169e1;">done</span>
+<span class="linenr">23: </span>
+<span class="linenr">24: </span>        <span style="color: #4169e1;">if</span> [ ! <span style="color: #bc8f8f;">"$(pgrep -u "${USER}" -x gpg-agent)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">25: </span>            /usr/local/bin/gpg-agent --enable-ssh-support <span style="color: #bc8f8f;">\</span>
+<span class="linenr">26: </span>                --pinentry-program <span style="color: #bc8f8f;">"${_PINENTRY}"</span> <span style="color: #bc8f8f;">\</span>
+<span class="linenr">27: </span>                --daemon <span style="color: #bc8f8f;">"$@"</span>
+<span class="linenr">28: </span>            <span style="color: #4169e1;">if</span> [ -f <span style="color: #bc8f8f;">"${HOME}/.gpg-agent-info"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">29: </span>                . <span style="color: #bc8f8f;">"${HOME}/.gpg-agent-info"</span>
+<span class="linenr">30: </span>                <span style="color: #00008b;">export</span> GPG_AGENT_INFO SSH_AUTH_SOCK
+<span class="linenr">31: </span>            <span style="color: #4169e1;">fi</span>
+<span class="linenr">32: </span>        <span style="color: #4169e1;">fi</span>
+<span class="linenr">33: </span>        ;;
+<span class="linenr">34: </span>    *)
+<span class="linenr">35: </span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">append pinentry-program since its location varied for each distro</span>
+<span class="linenr">36: </span>        [ -z <span style="color: #bc8f8f;">"$(pgrep -u ${USER} -x gpg-agent)"</span> ] &amp;&amp;
+<span class="linenr">37: </span>            gpg-agent --pinentry-program <span style="color: #bc8f8f;">"$(command -v pinentry)"</span> &gt;/dev/null 2&gt;&amp;1
+<span class="linenr">38: </span>        ;;
+<span class="linenr">39: </span><span style="color: #4169e1;">esac</span>
+<span class="linenr">40: </span>
+<span class="linenr">41: </span><span style="color: #00008b;">unset</span> SSH_AGENT_PID
+<span class="linenr">42: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"${gnupg_SSH_AUTH_SOCK_by:-0}"</span> -ne $<span style="color: #b8860b;">$</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">43: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">SSH_AUTH_SOCK</span>=<span style="color: #bc8f8f;">"$(gpgconf --list-dirs agent-ssh-socket)"</span>
+<span class="linenr">44: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">45: </span>
+<span class="linenr">46: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">keychain</span>
+<span class="linenr">47: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">https://wiki.gentoo.org/wiki/Keychain</span>
+<span class="linenr">48: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v keychain)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">49: </span>    [ -z <span style="color: #bc8f8f;">"${HOSTNAME}"</span> ] &amp;&amp; <span style="color: #b8860b;">HOSTNAME</span>=<span style="color: #bc8f8f;">"$(uname -n)"</span>
+<span class="linenr">50: </span>    keychain --quiet --agents <span style="color: #bc8f8f;">"gpg,ssh"</span>
+<span class="linenr">51: </span>    [ -f <span style="color: #bc8f8f;">"${HOME}/.keychain/${HOSTNAME}-sh"</span> ] &amp;&amp;
+<span class="linenr">52: </span>        . <span style="color: #bc8f8f;">"${HOME}/.keychain/${HOSTNAME}-sh"</span>
+<span class="linenr">53: </span>    [ -f <span style="color: #bc8f8f;">"${HOME}/.keychain/${HOSTNAME}-sh-gpg"</span> ] &amp;&amp;
+<span class="linenr">54: </span>        . <span style="color: #bc8f8f;">"${HOME}/.keychain/${HOSTNAME}-sh-gpg"</span>
+<span class="linenr">55: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4cda004" class="outline-4">
+<h4 id="org4cda004"><span class="section-number-4">4.1.7</span> file managers</h4>
+<div class="outline-text-4" id="text-4-1-7">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/05-filemanagers.sh</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">filemanager configuration</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">file manager</span>
+<span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v ranger)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-ranger}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v pcmanfm)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-pcmanfm}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v thunar)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-thunar}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v caja)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-caja}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v nautilus)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-nautilus}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v nemo)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-nemo}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v dolphin)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-dolpin}
+<span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v rox)"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">FILE</span>=${<span style="color: #b8860b;">FILE</span>:-rox}
+<span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga5fb66d" class="outline-4">
+<h4 id="orga5fb66d"><span class="section-number-4">4.1.8</span> browser</h4>
+<div class="outline-text-4" id="text-4-1-8">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/06-browser.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">${BROWSER} configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Browser</span>
+<span class="linenr"> 6: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v firefox)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-firefox}
+<span class="linenr"> 8: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v google-chrome-stable)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 9: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-google-chrome-stable}
+<span class="linenr">10: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v brave)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">11: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-brave}
+<span class="linenr">12: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v midori)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">13: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-midori}
+<span class="linenr">14: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v qutebrowser)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">15: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-qutebrowser}
+<span class="linenr">16: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v chromium)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">17: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-chromium}
+<span class="linenr">18: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v seamonkey)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">19: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-seamonkey}
+<span class="linenr">20: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v falkon)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">21: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-falkon}
+<span class="linenr">22: </span><span style="color: #4169e1;">else</span>
+<span class="linenr">23: </span>    [ <span style="color: #bc8f8f;">"$(command -v elinks)"</span> ] &amp;&amp;
+<span class="linenr">24: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-elinks}
+<span class="linenr">25: </span>
+<span class="linenr">26: </span>    [ <span style="color: #bc8f8f;">"$(command -v lynx)"</span> ] &amp;&amp;
+<span class="linenr">27: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-lynx}
+<span class="linenr">28: </span>
+<span class="linenr">29: </span>    [ <span style="color: #bc8f8f;">"$(command -v w3m)"</span> ] &amp;&amp;
+<span class="linenr">30: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=${<span style="color: #b8860b;">BROWSER</span>:-w3m}
+<span class="linenr">31: </span>
+<span class="linenr">32: </span>    [ <span style="color: #bc8f8f;">"$(command -v links)"</span> ] &amp;&amp;
+<span class="linenr">33: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">BROWSER</span>=<span style="color: #bc8f8f;">"${BROWSER:-links -g}"</span>
+<span class="linenr">34: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8115cf" class="outline-4">
+<h4 id="orga8115cf"><span class="section-number-4">4.1.9</span> mail apps</h4>
+<div class="outline-text-4" id="text-4-1-9">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/07-mail_apps.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">${MAIL_APP} configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v thunderbird)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-thunderbird}
+<span class="linenr"> 7: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v alpine)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 8: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-alpine}
+<span class="linenr"> 9: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v balsa)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">10: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-balsa}
+<span class="linenr">11: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v evolution)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">12: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-evolution}
+<span class="linenr">13: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v geary)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">14: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-geary}
+<span class="linenr">15: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v kmail)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">16: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-kmail}
+<span class="linenr">17: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v kube)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">18: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-kube}
+<span class="linenr">19: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v mailspring)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">20: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">MAIL_APP</span>=${<span style="color: #b8860b;">MAIL_APP</span>:-mailspring}
+<span class="linenr">21: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0b1596" class="outline-4">
+<h4 id="orgd0b1596"><span class="section-number-4">4.1.10</span> themes</h4>
+<div class="outline-text-4" id="text-4-1-10">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/10-themes.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">themes configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">wal</span>
+<span class="linenr"> 6: </span><span style="color: #b22222;">#</span><span style="color: #b22222;">if [ "$(command -v wal)" ] &amp;&amp; [ -z "${SSH_CLIENT}" ]; then</span>
+<span class="linenr"> 7: </span><span style="color: #b22222;">#    </span><span style="color: #b22222;">wal -R</span>
+<span class="linenr"> 8: </span><span style="color: #b22222;">#</span><span style="color: #b22222;">fi</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${DESKTOP_SESSION}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">11: </span>    <span style="color: #4169e1;">case</span> ${<span style="color: #b8860b;">XDG_CURRENT_DESKTOP</span>} <span style="color: #4169e1;">in</span>
+<span class="linenr">12: </span>        <span style="color: #bc8f8f;">"KDE"</span>)
+<span class="linenr">13: </span>            <span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${xrdb_args}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">14: </span>                $(command -v xrdb) -merge <span style="color: #bc8f8f;">"${xrdb_args}"</span> <span style="color: #bc8f8f;">"${HOME}"</span>/.Xresources &gt;/dev/null 2&gt;&amp;1
+<span class="linenr">15: </span>            <span style="color: #4169e1;">fi</span>
+<span class="linenr">16: </span>            ;;
+<span class="linenr">17: </span>    <span style="color: #4169e1;">esac</span>
+<span class="linenr">18: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">19: </span><span style="color: #00008b;">export</span> <span style="color: #b8860b;">GTK_THEME</span>=${<span style="color: #b8860b;">GTK_THEME</span>:Breeze-Dark}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6d7c11" class="outline-4">
+<h4 id="orgf6d7c11"><span class="section-number-4">4.1.11</span> cargo</h4>
+<div class="outline-text-4" id="text-4-1-11">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-cargo.sh</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">cargo configuration</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">https://wiki.archlinux.org/index.php/Rust#Cargo</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+
+<span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"$HOME/.cargo/bin"</span> ];<span style="color: #4169e1;">then</span>
+   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=$<span style="color: #b8860b;">HOME</span>/.cargo/bin:$<span style="color: #b8860b;">PATH</span>
+<span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgafc2095" class="outline-4">
+<h4 id="orgafc2095"><span class="section-number-4">4.1.12</span> ccache</h4>
+<div class="outline-text-4" id="text-4-1-12">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ccache.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">ccache configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v ccache)"</span> ] &amp;&amp;
+<span class="linenr"> 6: </span>       [ -d <span style="color: #bc8f8f;">"/usr/lib/ccache/bin"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    <span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"${SHELL}"</span> != <span style="color: #bc8f8f;">"/bin/sh"</span> ] &amp;&amp;
+<span class="linenr"> 8: </span>           [ <span style="color: #bc8f8f;">"$(command -v pathprepend)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 9: </span>        pathprepend /usr/lib/ccache/bin
+<span class="linenr">10: </span>    <span style="color: #4169e1;">else</span>
+<span class="linenr">11: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=/usr/lib/ccache/bin:<span style="color: #bc8f8f;">"${PATH}"</span>
+<span class="linenr">12: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">13: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #4169e1;">case</span> <span style="color: #bc8f8f;">"${DISTRO}"</span><span style="color: #4169e1;"> in</span>
+<span class="linenr">16: </span>    <span style="color: #bc8f8f;">"gentoo"</span>)
+<span class="linenr">17: </span>        [ -r /var/cache/ccache ] &amp;&amp;
+<span class="linenr">18: </span>            <span style="color: #00008b;">export</span> <span style="color: #b8860b;">CCACHE_DIR</span>=<span style="color: #bc8f8f;">"/var/cache/ccache"</span>
+<span class="linenr">19: </span>        ;;
+<span class="linenr">20: </span><span style="color: #4169e1;">esac</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8eee08" class="outline-4">
+<h4 id="orgd8eee08"><span class="section-number-4">4.1.13</span> composer</h4>
+<div class="outline-text-4" id="text-4-1-13">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-composer.sh</span>
+<span class="linenr">2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">composer path configuration</span>
+<span class="linenr">3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v composer)"</span> ] &amp;&amp;
+<span class="linenr">6: </span>   [ -d <span style="color: #bc8f8f;">"${HOME}/.config/composer/vendor/bin"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">7: </span>   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/.config/composer/vendor/bin:${PATH}"</span>
+<span class="linenr">8: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc05a345" class="outline-4">
+<h4 id="orgc05a345"><span class="section-number-4">4.1.14</span> dash</h4>
+<div class="outline-text-4" id="text-4-1-14">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-dash.sh</span>
+<span class="linenr">2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for dash shells and other sh equivalent</span>
+<span class="linenr">3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #4169e1;">if</span> ([ <span style="color: #bc8f8f;">"${SHELL}"</span> = <span style="color: #bc8f8f;">"/bin/sh"</span> ] || [ <span style="color: #bc8f8f;">"${SHELL}"</span> = <span style="color: #bc8f8f;">"/bin/dash"</span> ]);<span style="color: #4169e1;">then</span>
+<span class="linenr">6: </span>   <span style="color: #b8860b;">ENV</span>=${<span style="color: #b8860b;">HOME</span>}/.shrc; <span style="color: #00008b;">export</span> ENV
+<span class="linenr">7: </span>   [ -x /usr/bin/resizewin ] &amp;&amp; /usr/bin/resizewin -z
+<span class="linenr">8: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6c877f0" class="outline-4">
+<h4 id="org6c877f0"><span class="section-number-4">4.1.15</span> doom emacs</h4>
+<div class="outline-text-4" id="text-4-1-15">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-doom_emacs.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">doom emacs path</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v emacs)"</span> ] &amp;&amp;
+<span class="linenr"> 6: </span>    [ -e <span style="color: #bc8f8f;">"${HOME}"</span>/.emacs.d/bin/doom ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    [ ! <span style="color: #bc8f8f;">"$(command -v doom)"</span> ] &amp;&amp;
+<span class="linenr"> 8: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${PATH}:${HOME}/.emacs.d/bin"</span>
+<span class="linenr"> 9: </span><span style="color: #4169e1;">elif</span> [ -e <span style="color: #bc8f8f;">"${HOME}/.config/doom/bin/doom"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">10: </span>    [ ! <span style="color: #bc8f8f;">"$(command -v doom)"</span> ] &amp;&amp;
+<span class="linenr">11: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${PATH}/.config/doom/bin"</span>
+<span class="linenr">12: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org45fa695" class="outline-4">
+<h4 id="org45fa695"><span class="section-number-4">4.1.16</span> elinks</h4>
+<div class="outline-text-4" id="text-4-1-16">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-elinks.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for elinks</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v elinks)"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>   <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}"</span>/elinks ];<span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>      <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.elinks"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 8: </span>          mv <span style="color: #bc8f8f;">"${HOME}/.elinks"</span> <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/elinks"</span>
+<span class="linenr"> 9: </span>      <span style="color: #4169e1;">else</span>
+<span class="linenr">10: </span>          mkdir -p <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/elinks"</span>
+<span class="linenr">11: </span>      <span style="color: #4169e1;">fi</span>
+<span class="linenr">12: </span>   <span style="color: #4169e1;">fi</span>
+<span class="linenr">13: </span>      <span style="color: #00008b;">export</span> <span style="color: #b8860b;">ELINKS_CONFDIR</span>=<span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/elinks"</span>
+<span class="linenr">14: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb9f90e0" class="outline-4">
+<h4 id="orgb9f90e0"><span class="section-number-4">4.1.17</span> emacs vterm</h4>
+<div class="outline-text-4" id="text-4-1-17">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-emacs-vterm.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">https://github.com/akermu/emacs-libvterm</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">dont' source this in sh</span>
+<span class="linenr"> 6: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"${SHELL}"</span> = <span style="color: #bc8f8f;">"/bin/sh"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    <span style="color: #4169e1;">return</span>
+<span class="linenr"> 8: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #0000ff;">vterm_printf</span>(){
+<span class="linenr">11: </span>    <span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"$TMUX"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">12: </span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">Tell tmux to pass the escape sequences through</span>
+<span class="linenr">13: </span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">(Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)</span>
+<span class="linenr">14: </span>        printf <span style="color: #bc8f8f;">"\ePtmux;\e\e]%s\007\e\\"</span> <span style="color: #bc8f8f;">"$1"</span>
+<span class="linenr">15: </span>    <span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"${TERM%%-*}"</span> = <span style="color: #bc8f8f;">"screen"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">16: </span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">GNU screen (screen, screen-256color, screen-256color-bce)</span>
+<span class="linenr">17: </span>        printf <span style="color: #bc8f8f;">"\eP\e]%s\007\e\\"</span> <span style="color: #bc8f8f;">"$1"</span>
+<span class="linenr">18: </span>    <span style="color: #4169e1;">else</span>
+<span class="linenr">19: </span>        printf <span style="color: #bc8f8f;">"\e]%s\e\\"</span> <span style="color: #bc8f8f;">"$1"</span>
+<span class="linenr">20: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">21: </span>}
+<span class="linenr">22: </span>
+<span class="linenr">23: </span><span style="color: #4169e1;">if</span> [[ <span style="color: #bc8f8f;">"$INSIDE_EMACS"</span> = <span style="color: #bc8f8f;">'vterm'</span> ]]; <span style="color: #4169e1;">then</span>
+<span class="linenr">24: </span>    <span style="color: #4169e1;">function</span> <span style="color: #0000ff;">clear</span>(){
+<span class="linenr">25: </span>        vterm_printf <span style="color: #bc8f8f;">"51;Evterm-clear-scrollback"</span>;
+<span class="linenr">26: </span>        tput clear;
+<span class="linenr">27: </span>    }
+<span class="linenr">28: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">29: </span>
+<span class="linenr">30: </span><span style="color: #0000ff;">vterm_cmd</span>() {
+<span class="linenr">31: </span>    local vterm_elisp
+<span class="linenr">32: </span>    <span style="color: #b8860b;">vterm_elisp</span>=<span style="color: #bc8f8f;">""</span>
+<span class="linenr">33: </span>    <span style="color: #4169e1;">while</span> [ $<span style="color: #b8860b;">#</span> -gt 0 ]; <span style="color: #4169e1;">do</span>
+<span class="linenr">34: </span>        <span style="color: #b8860b;">vterm_elisp</span>=<span style="color: #bc8f8f;">"$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"</span>
+<span class="linenr">35: </span>        <span style="color: #00008b;">shift</span>
+<span class="linenr">36: </span>    <span style="color: #4169e1;">done</span>
+<span class="linenr">37: </span>    vterm_printf <span style="color: #bc8f8f;">"51;E$vterm_elisp"</span>
+<span class="linenr">38: </span>}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd8463f" class="outline-4">
+<h4 id="orgdd8463f"><span class="section-number-4">4.1.18</span> freeBSD</h4>
+<div class="outline-text-4" id="text-4-1-18">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-freebsd.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for FreeBSD</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"${DISTRO}"</span> = <span style="color: #bc8f8f;">"freebsd"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>   <span style="color: #b8860b;">ENV</span>=${<span style="color: #b8860b;">HOME</span>}/.shrc
+<span class="linenr"> 7: </span>   <span style="color: #00008b;">export</span> ENV
+<span class="linenr"> 8: </span>   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PAGER</span>=less
+<span class="linenr"> 9: </span>   [ -x /usr/bin/resizewin ] &amp;&amp; /usr/bin/resizewin -z
+<span class="linenr">10: </span>   [ -x /usr/bin/fortune ] &amp;&amp; /usr/bin/fortune freebsd-tips
+<span class="linenr">11: </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">Let sh(1) know it's at home, despite /home being a symlink.</span>
+<span class="linenr">12: </span>   <span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$PWD"</span> != <span style="color: #bc8f8f;">"$HOME"</span> ] &amp;&amp; [ <span style="color: #bc8f8f;">"$PWD"</span> -ef <span style="color: #bc8f8f;">"$HOME"</span> ]; <span style="color: #4169e1;">then </span><span style="color: #00008b;">cd</span> || <span style="color: #4169e1;">return</span>; <span style="color: #4169e1;">fi</span>
+<span class="linenr">13: </span>   <span style="color: #00008b;">cd</span> <span style="color: #bc8f8f;">"${HOME}"</span> || <span style="color: #4169e1;">exit</span>
+<span class="linenr">14: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgafb458a" class="outline-4">
+<h4 id="orgafb458a"><span class="section-number-4">4.1.19</span> fsharp</h4>
+<div class="outline-text-4" id="text-4-1-19">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-fsharp.sh</span>
+<span class="linenr">2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for F#</span>
+<span class="linenr">3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #4169e1;">if</span> [[ -d <span style="color: #bc8f8f;">"${HOME}/.dotnet/tools"</span> ]] &amp;&amp;
+<span class="linenr">6: </span>       [[ $(command -v dotnet) ]]; <span style="color: #4169e1;">then</span>
+<span class="linenr">7: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${PATH}:${HOME}/.dotnet/tools"</span>
+<span class="linenr">8: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79df817" class="outline-4">
+<h4 id="org79df817"><span class="section-number-4">4.1.20</span> ghcup</h4>
+<div class="outline-text-4" id="text-4-1-20">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ghcup.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">haskell's ghcup configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>[ -f <span style="color: #bc8f8f;">"/home/alexforsale/.ghcup/env"</span> ] &amp;&amp; source <span style="color: #bc8f8f;">"/home/alexforsale/.ghcup/env"</span> <span style="color: #b22222;"># </span><span style="color: #b22222;">ghcup-env</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.ghcup/bin"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 8: </span>    contains <span style="color: #bc8f8f;">"${PATH}"</span> <span style="color: #bc8f8f;">"${HOME}/.ghcup/bin"</span> ||
+<span class="linenr"> 9: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/.ghcup/bin:${PATH}"</span>
+<span class="linenr">10: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2c0c8c4" class="outline-4">
+<h4 id="org2c0c8c4"><span class="section-number-4">4.1.21</span> go</h4>
+<div class="outline-text-4" id="text-4-1-21">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-go.sh</span>
+<span class="linenr">2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">$GOPATH configuration</span>
+<span class="linenr">3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v go)"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr">6: </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">set GOPATH to ~/.local so we don't need</span>
+<span class="linenr">7: </span>   <span style="color: #b22222;"># </span><span style="color: #b22222;">to add more PATH</span>
+<span class="linenr">8: </span>   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">GOPATH</span>=${<span style="color: #b8860b;">GOPATH</span>:-~/.local}
+<span class="linenr">9: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org048273b" class="outline-4">
+<h4 id="org048273b"><span class="section-number-4">4.1.22</span> guix</h4>
+<div class="outline-text-4" id="text-4-1-22">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-guix.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">guix configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ $(command -v guix) ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>    <span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${GUIX_LOCPATH}"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>       <span style="color: #b22222;"># </span><span style="color: #b22222;">add /bin and /usr/bin to path</span>
+<span class="linenr"> 8: </span>       <span style="color: #b22222;"># </span><span style="color: #b22222;">to add more PATH</span>
+<span class="linenr"> 9: </span>       <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=${<span style="color: #b8860b;">PATH</span>}:/bin
+<span class="linenr">10: </span>       <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=${<span style="color: #b8860b;">PATH</span>}:/usr/bin
+<span class="linenr">11: </span>       <span style="color: #b22222;"># </span><span style="color: #b22222;">set the GUIX_BUILD_OPTIONS</span>
+<span class="linenr">12: </span>       contains <span style="color: #bc8f8f;">"${GUIX_BUILD_OPTIONS}"</span> <span style="color: #bc8f8f;">"-v 3 -c 2 -M 2"</span> ||
+<span class="linenr">13: </span>           <span style="color: #00008b;">export</span> <span style="color: #b8860b;">GUIX_BUILD_OPTIONS</span>=<span style="color: #bc8f8f;">"${GUIX_BUILD_OPTIONS} -v 3 -c 2 -M 2"</span>
+<span class="linenr">14: </span>       <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.guix-profile/bin"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">15: </span>           <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/.guix-profile/bin:${PATH}"</span>
+<span class="linenr">16: </span>       <span style="color: #4169e1;">fi</span>
+<span class="linenr">17: </span>       <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.guix-profile/sbin"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">18: </span>           <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/.guix-profile/sbin:${PATH}"</span>
+<span class="linenr">19: </span>       <span style="color: #4169e1;">fi</span>
+<span class="linenr">20: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span>       <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.guix-profile/share/emacs/site-lisp"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">23: </span>           contains <span style="color: #bc8f8f;">"${EMACSLOADPATH}"</span> <span style="color: #bc8f8f;">"${HOME}/.guix-profile/share/emacs/site-lisp"</span> ||
+<span class="linenr">24: </span>               <span style="color: #00008b;">export</span> <span style="color: #b8860b;">EMACSLOADPATH</span>=<span style="color: #bc8f8f;">"${HOME}/.guix-profile/share/emacs/site-lisp:${EMACSLOADPATH}"</span>
+<span class="linenr">25: </span>           contains <span style="color: #bc8f8f;">"${XDG_DATA_DIRS}"</span> <span style="color: #bc8f8f;">"${HOME}/.guix-profile/share"</span> ||
+<span class="linenr">26: </span>               <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DATA_DIRS</span>=<span style="color: #bc8f8f;">"${HOME}/.guix-profile/share:${XDG_DATA_DIRS}"</span>
+<span class="linenr">27: </span>       <span style="color: #4169e1;">fi</span>
+<span class="linenr">28: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">29: </span>
+<span class="linenr">30: </span><span style="color: #00008b;">export</span> <span style="color: #b8860b;">QT_XCB_GL_INTEGRATION</span>=none
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ab1a68" class="outline-4">
+<h4 id="org5ab1a68"><span class="section-number-4">4.1.23</span> nano</h4>
+<div class="outline-text-4" id="text-4-1-23">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-nano.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">see https://nano-editor.org</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v nano)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>    <span style="color: #4169e1;">if</span> [ ! -d <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/nano"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>        mkdir -p <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/nano"</span>
+<span class="linenr"> 8: </span>        <span style="color: #4169e1;">if</span> [ -f <span style="color: #bc8f8f;">"${HOME}/.nanorc"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 9: </span>            mv <span style="color: #bc8f8f;">"${HOME}/.nanorc"</span> <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/nanorc"</span>
+<span class="linenr">10: </span>        <span style="color: #4169e1;">fi</span>
+<span class="linenr">11: </span>    <span style="color: #4169e1;">else</span>
+<span class="linenr">12: </span>        <span style="color: #4169e1;">if</span> [ -f <span style="color: #bc8f8f;">"${HOME}/.nanorc"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">13: </span>            mv <span style="color: #bc8f8f;">"${HOME}/.nanorc"</span> <span style="color: #bc8f8f;">"${XDG_HOME_CONFIG}/nanorc.bak"</span>
+<span class="linenr">14: </span>        <span style="color: #4169e1;">fi</span>
+<span class="linenr">15: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">16: </span>    <span style="color: #b22222;"># </span><span style="color: #b22222;">backups</span>
+<span class="linenr">17: </span>    mkdir -p <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/nano/backups"</span>
+<span class="linenr">18: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaafd597" class="outline-4">
+<h4 id="orgaafd597"><span class="section-number-4">4.1.24</span> nix</h4>
+<div class="outline-text-4" id="text-4-1-24">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-nix.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">nix configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>[ -d <span style="color: #bc8f8f;">"${HOME}/.nix-profile/bin"</span> ] &amp;&amp; <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PATH</span>=${<span style="color: #b8860b;">PATH</span>}:${<span style="color: #b8860b;">HOME</span>}/.nix-profile/bin
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${GUIX_LOCPATH}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 8: </span>    <span style="color: #b22222;"># </span><span style="color: #b22222;">source profile.d</span>
+<span class="linenr"> 9: </span>    [ -e /run/current-system/profile/etc/profile.d/nix.sh ] &amp;&amp; . /run/current-system/profile/etc/profile.d/nix.sh
+<span class="linenr">10: </span>    [ -e /run/current-system/profile/etc/profile.d/nix-daemon.sh ] &amp;&amp; . /run/current-system/profile/etc/profile.d/nix-daemon.sh
+<span class="linenr">11: </span>    <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.nix-profile/share/icons"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">12: </span>        contains <span style="color: #bc8f8f;">"${XCURSOR_PATH}"</span> <span style="color: #bc8f8f;">"${HOME}/.nix-profile/share/icons"</span> ||
+<span class="linenr">13: </span>            <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XCURSOR_PATH</span>=<span style="color: #bc8f8f;">"${XCURSOR_PATH}:${HOME}/.nix-profile/share/icons"</span>
+<span class="linenr">14: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">15: </span>    <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.nix-profile/share"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">16: </span>        contains <span style="color: #bc8f8f;">"${XDG_DATA_DIRS}"</span> <span style="color: #bc8f8f;">"${HOME}/.nix-profile/share"</span> ||
+<span class="linenr">17: </span>            <span style="color: #00008b;">export</span> <span style="color: #b8860b;">XDG_DATA_DIRS</span>=<span style="color: #bc8f8f;">"${HOME}/.nix-profile/share:${XDG_DATA_DIRS}"</span>
+<span class="linenr">18: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">19: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb36269f" class="outline-4">
+<h4 id="orgb36269f"><span class="section-number-4">4.1.25</span> npm</h4>
+<div class="outline-text-4" id="text-4-1-25">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-npm.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">node packaged module configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">see https://wiki.archlinux.org/index.php/Node.js</span>
+<span class="linenr"> 4: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.config/nvm"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">NVM_DIR</span>=<span style="color: #bc8f8f;">"${HOME}/.config/nvm"</span>
+<span class="linenr"> 8: </span>    [ -s <span style="color: #bc8f8f;">"${NVM_DIR}/nvm.sh"</span> ] &amp;&amp; <span style="color: #bc8f8f;">\.</span> <span style="color: #bc8f8f;">"${NVM_DIR}/nvm.sh"</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">This loads nvm</span>
+<span class="linenr"> 9: </span>    [ -n <span style="color: #bc8f8f;">"${BASH}"</span> ] &amp;&amp;
+<span class="linenr">10: </span>        [ -s <span style="color: #bc8f8f;">"${NVM_DIR}/bash_completion"</span> ] &amp;&amp; <span style="color: #bc8f8f;">\.</span> <span style="color: #bc8f8f;">"${NVM_DIR}/bash_completion"</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">This loads nvm bash_completion</span>
+<span class="linenr">11: </span>    <span style="color: #4169e1;">if</span> [ -n <span style="color: #bc8f8f;">"${npm_config_prefix}"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">12: </span>        <span style="color: #00008b;">unset</span> npm_config_prefix
+<span class="linenr">13: </span>    <span style="color: #4169e1;">fi</span>
+<span class="linenr">14: </span><span style="color: #4169e1;">elif</span> [ <span style="color: #bc8f8f;">"$(command -v npm)"</span> ] &amp;&amp; [ ! <span style="color: #bc8f8f;">"$(command -v nvm)"</span> ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">15: </span>   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">npm_config_prefix</span>=<span style="color: #bc8f8f;">"${HOME}/.local"</span>
+<span class="linenr">16: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf316dd2" class="outline-4">
+<h4 id="orgf316dd2"><span class="section-number-4">4.1.26</span> password-store</h4>
+<div class="outline-text-4" id="text-4-1-26">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-password-store.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for pass</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ -f /run/current-system/profile/lib/password-store/extensions/otp.bash ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>    [ ! -L <span style="color: #bc8f8f;">"${HOME}/.password-store/.extensions/otp.bash"</span> ] &amp;&amp;
+<span class="linenr"> 7: </span>        ln -s /run/current-system/profile/lib/password-store/extensions/otp.bash <span style="color: #bc8f8f;">\</span>
+<span class="linenr"> 8: </span>            <span style="color: #bc8f8f;">"${HOME}/.password-store/.extensions/"</span>
+<span class="linenr"> 9: </span>    <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PASSWORD_STORE_ENABLE_EXTENSIONS</span>=true
+<span class="linenr">10: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d348db" class="outline-4">
+<h4 id="org0d348db"><span class="section-number-4">4.1.27</span> perl</h4>
+<div class="outline-text-4" id="text-4-1-27">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-perl.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for perl</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>[ ! -d <span style="color: #bc8f8f;">"${HOME}/.local/perl5/bin"</span> ] &amp;&amp;
+<span class="linenr"> 6: </span>    mkdir -p <span style="color: #bc8f8f;">"${HOME}/.local/perl5/bin"</span>
+<span class="linenr"> 7: </span>[ ! -d <span style="color: #bc8f8f;">"${HOME}/.local/perl5/lib/perl5"</span> ] &amp;&amp;
+<span class="linenr"> 8: </span>    mkdir -p <span style="color: #bc8f8f;">"${HOME}/.local/perl5/lib/perl5"</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"${HOME}/.local/perl5/bin${PATH:+:${PATH}}"</span>
+<span class="linenr">11: </span><span style="color: #b8860b;">PERL5LIB</span>=<span style="color: #bc8f8f;">"${HOME}/.local/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"</span>
+<span class="linenr">12: </span><span style="color: #b8860b;">PERL_LOCAL_LIB_ROOT</span>=<span style="color: #bc8f8f;">"${HOME}/.local/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"</span>
+<span class="linenr">13: </span><span style="color: #b8860b;">PERL_MB_OPT</span>=<span style="color: #bc8f8f;">"--install_base \"${HOME}/.local/perl5\""</span>
+<span class="linenr">14: </span><span style="color: #b8860b;">PERL_MM_OPT</span>=<span style="color: #bc8f8f;">"INSTALL_BASE=${HOME}/.local/perl5"</span>
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #00008b;">export</span> PATH PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ecb1ee" class="outline-4">
+<h4 id="org4ecb1ee"><span class="section-number-4">4.1.28</span> python</h4>
+<div class="outline-text-4" id="text-4-1-28">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-python.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">Python configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ $(command -v pipenv) ]; <span style="color: #4169e1;">then</span>
+<span class="linenr"> 6: </span>    [ -z <span style="color: #bc8f8f;">"${PIPENV_VENV_IN_PROJECT}"</span> ] &amp;&amp;
+<span class="linenr"> 7: </span>        <span style="color: #00008b;">export</span> <span style="color: #b8860b;">PIPENV_VENV_IN_PROJECT</span>=1
+<span class="linenr"> 8: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">pyenv</span>
+<span class="linenr">11: </span><span style="color: #4169e1;">if</span> [ $(command -v pyenv) ]; <span style="color: #4169e1;">then</span>
+<span class="linenr">12: </span>    <span style="color: #00008b;">eval</span> <span style="color: #bc8f8f;">"$(pyenv init -)"</span>
+<span class="linenr">13: </span><span style="color: #4169e1;">fi</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org35b7872" class="outline-4">
+<h4 id="org35b7872"><span class="section-number-4">4.1.29</span> ruby</h4>
+<div class="outline-text-4" id="text-4-1-29">
+<div class="org-src-container">
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ruby.sh</span>
+<span class="linenr"> 2: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">ruby configuration</span>
+<span class="linenr"> 3: </span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v ruby)"</span> ] &amp;&amp;
+<span class="linenr"> 6: </span>       [ -d <span style="color: #bc8f8f;">"$(ruby -e 'print Gem.user_dir')/bin"</span> ];<span style="color: #4169e1;">then</span>
+<span class="linenr"> 7: </span>   <span style="color: #b8860b;">PATH</span>=<span style="color: #bc8f8f;">"$(ruby -e 'print Gem.user_dir')/bin:$PATH"</span>
+<span class="linenr"> 8: </span>   <span style="color: #00008b;">export</span> <span style="color: #b8860b;">GEM_HOME</span>=<span style="color: #bc8f8f;">"$(ruby -e 'puts Gem.user_dir')"</span>
+<span class="linenr"> 9: </span><span style="color: #4169e1;">fi</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #00008b;">export</span> PATH
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2dc7484" class="outline-4">
+<h4 id="org2dc7484"><span class="section-number-4">4.1.30</span> screen</h4>
+<div class="outline-text-4" id="text-4-1-30">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-screen.sh</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for GNU Screen</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a></span>
+
+<span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"$(command -v screen)"</span> ] &amp;&amp;
+       [ ! -d <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/screen"</span> ]; <span style="color: #4169e1;">then</span>
+    <span style="color: #4169e1;">if</span> [ -d <span style="color: #bc8f8f;">"${HOME}/.screen"</span> ]; <span style="color: #4169e1;">then</span>
+        mv <span style="color: #bc8f8f;">"${HOME}/.screen"</span> <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/screen"</span>
+    <span style="color: #4169e1;">else</span>
+        mkdir -p <span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/screen"</span>
+    <span style="color: #4169e1;">fi</span>
+<span style="color: #4169e1;">fi</span>
+<span style="color: #00008b;">export</span> <span style="color: #b8860b;">SCREENDIR</span>=<span style="color: #bc8f8f;">"${XDG_CONFIG_HOME}/screen"</span>
+chmod 700 <span style="color: #bc8f8f;">"${SCREENDIR}"</span>
+<span style="color: #00008b;">export</span> <span style="color: #b8860b;">SCREENRC</span>=<span style="color: #bc8f8f;">"${SCREENDIR}/config"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2024-03-12 Tue 00:00</p>
+<p class="author">Author: Kristian Alexander P</p>
+<p class="date">Created: 2024-03-12 Tue 07:39</p>
+</div>
+</body>
+</html>
