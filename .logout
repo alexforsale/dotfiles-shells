@@ -1,7 +1,0 @@
-#!/usr/bin/env tcsh
-# -*- mode: sh -*-
-#
-# .logout - csh logout script
-#
-
-if ( -x `which clear` ) clear
