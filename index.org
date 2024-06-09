@@ -14,12 +14,14 @@
 #+startup: indent fold
 #+export_file_name: index.html
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+This repository is a collection of common POSIX-compliant shells configuration files that I used.
 * =.shrc=
 :PROPERTIES:
 :header-args: :tangle .shrc :shebang #!/bin/sh
 :END:
 
-Taken from /FreeBSD/.
+Taken from /FreeBSD/. This file will be used if the shell is invoked for interactive use and the environment variable ENV is set to this file.
 #+begin_src sh -n
   # $FreeBSD$
   #
@@ -65,12 +67,13 @@ Taken from /FreeBSD/.
   # search path for cd(1)
   # CDPATH=:$HOME
 #+end_src
+This file itself will only be called from the system / user profile (=/etc/profile= or =~/.profile=).
 * =.login=
 :PROPERTIES:
 :header-args: :tangle .login :shebang #!/usr/bin/env tcsh
 :END:
 
-Used by =csh= and =tcsh=.
+Used by =csh= and =tcsh=. Read after =.cshrc= at login.
 #+begin_src sh -n
   # -*- mode: sh -*-
   # $FreeBSD$
@@ -103,7 +106,7 @@ Used by =csh= and =tcsh=.
 :header-args: :tangle .profile :shebang #!/bin/sh
 :END:
 
-Used by various shells.
+Used by various shells. It is important to keep this script POSIX-compliant since there's more than one shell depends on it.
 #+begin_src sh -n
   # ~/.profile
   # Environment and startup programs.
@@ -163,11 +166,13 @@ Used by various shells.
 
 ** Modules
 
+Their file names are prefixed with numbers =dd-filename= to ensure the order.
 *** distro
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/00-distro.sh :mkdirp t :shebang #!/bin/sh
 :END:
 
+This is an easier way for my shell scripts to query the currently running *nix distribution and their version.
 #+begin_src sh
   # ~/.config/profile.d/00-distro.sh
   # set distro environment
@@ -205,12 +210,14 @@ Used by various shells.
 
   export DISTRO DISTROVER
 #+end_src
+The =contains()= function is for a quick string search.
 
 *** locale
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/00-locale.sh :mkdirp t :shebang #!/bin/sh
 :END:
 
+This is rarely used, most of the times the the system shell startup files already defined these variables.
 #+begin_src sh -n
   # ~/.config/profile.d/00-locale.sh
   # locale settings
@@ -226,6 +233,7 @@ Used by various shells.
 :header-args: :tangle .config/profile.d/01-xdg_base_directory.sh :mkdirp t :shebang #!/bin/sh
 :END:
 
+Ensure the running session comply to the XDG Base Directory specification. Variable declaration should be guarded in case the running system already declares it.
 #+begin_src sh -n
   # ~/.config/profile.d/01-xdg_base_directory.sh
   # XDG Base Directory specification
@@ -238,7 +246,7 @@ Used by various shells.
     fi
   fi
 
-  XDG_CONFIG_HOME="${HOME}/.config"
+  [ -z "${XDG_CONFIG_HOME}" ] && XDG_CONFIG_HOME="${HOME}/.config"
 
   if [ -z "${XDG_CACHE_HOME}" ]; then
     if [ -d "${HOME}/.cache" ]; then
@@ -246,7 +254,7 @@ Used by various shells.
     fi
   fi
 
-  XDG_CACHE_HOME="${HOME}/.cache"
+  [ -z "${XDG_CACHE_HOME}" ] && XDG_CACHE_HOME="${HOME}/.cache"
 
   if [ -z "${XDG_DATA_HOME}" ]; then
     if [ -d "${HOME}/.local/share" ]; then
@@ -254,7 +262,7 @@ Used by various shells.
     fi
   fi
 
-  XDG_DATA_HOME="${HOME}/.local/share"
+  [ -z "${XDG_DATA_HOME}" ] && XDG_DATA_HOME="${HOME}/.local/share"
 
   if [ -z "${XDG_RUNTIME_DIR}" ]; then
     case "${DISTRO}" in
@@ -326,84 +334,89 @@ Used by various shells.
 :header-args: :tangle .config/profile.d/02-editors.sh :mkdirp t :shebang #!/bin/sh
 :END:
 
+- $EDITOR :: Application set as this variable should be able to operate without the "advanced" terminal functionalities. Most of the times, =vi= is the default $EDITOR
+- $VISUAL :: for fullscreen editors.
 #+begin_src sh -n
-# ~/.config/profile.d/02-editors.sh
-# ${EDITOR}, ${VISUAL} and ${ALTERNATE_EDITOR}
-# <alexforsale@yahoo.com>
+  # ~/.config/profile.d/02-editors.sh
+  # ${EDITOR}, ${VISUAL} and ${ALTERNATE_EDITOR}
+  # <alexforsale@yahoo.com>
 
-# chemacs-profile
-if [ -e "${HOME}/.config/chemacs/profile" ]; then
-    export CHEMACS_PROFILE="$(cat ${HOME}/.config/chemacs/profile)"
-elif [ -e "${HOME}/.emacs-profile" ]; then
-    export CHEMACS_PROFILE="$(cat ${HOME}/.emacs-profile)"
-fi
+  # chemacs-profile
+  if [ -e "${HOME}/.config/chemacs/profile" ]; then
+      export CHEMACS_PROFILE="$(cat ${HOME}/.config/chemacs/profile)"
+  elif [ -e "${HOME}/.emacs-profile" ]; then
+      export CHEMACS_PROFILE="$(cat ${HOME}/.emacs-profile)"
+  fi
 
-[ -n "${CHEMACS_PROFILE}" ] && emacs_args="-s ${CHEMACS_PROFILE}"
+  [ -n "${CHEMACS_PROFILE}" ] && emacs_args="-s ${CHEMACS_PROFILE}"
 
-# see https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
-if [ "$(command -v emacs)" ]; then
-    export VISUAL="${VISUAL:-emacsclient -c} ${emacs_args}"
-    export EDITOR="${EDITOR:-emacsclient -t} ${emacs_args}"
-    export ALTERNATE_EDITOR=${VISUAL}
-elif [ "$(command -v gvim)" ]; then # in case it's available, I don't use much of this
-    export EDITOR="${EDITOR:-vim}"  # this should also installed
-    export VISUAL="${VISUAL:-gvim}"
-elif [ "$(command -v vim)" ]; then # most distro provide this (linux that is)
-    export EDITOR="${EDITOR:-vim}"
-    export VISUAL="${VISUAL:-vim}"
-else
-    [ $(command -v nvim) ] &&
-        export EDITOR="${EDITOR:-nvim}"
+  # see https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
+  if [ "$(command -v emacs)" ]; then
+      export VISUAL="${VISUAL:-emacsclient -c} ${emacs_args}"
+      export EDITOR="${EDITOR:-emacsclient -t} ${emacs_args}"
+      export ALTERNATE_EDITOR=${VISUAL}
+  elif [ "$(command -v gvim)" ]; then # in case it's available, I don't use much of this
+      export EDITOR="${EDITOR:-vim}"  # this should also installed
+      export VISUAL="${VISUAL:-gvim}"
+  elif [ "$(command -v vim)" ]; then # most distro provide this (linux that is)
+      export EDITOR="${EDITOR:-vim}"
+      export VISUAL="${VISUAL:-vim}"
+  else
+      [ $(command -v nvim) ] &&
+          export EDITOR="${EDITOR:-nvim}"
 
-    [ $(command -v leafpad) ] &&
-        export EDITOR="${EDITOR:-leafpad}"
+      [ $(command -v leafpad) ] &&
+          export EDITOR="${EDITOR:-leafpad}"
 
-    [ $(command -v l3afpad) ] &&
-        export EDITOR="${EDITOR:-l3afpad}"
+      [ $(command -v l3afpad) ] &&
+          export EDITOR="${EDITOR:-l3afpad}"
 
-    [ $(command -v kate) ] &&
-        export EDITOR="${EDITOR:-kate}"
+      [ $(command -v kate) ] &&
+          export EDITOR="${EDITOR:-kate}"
 
-    [ $(command -v pluma) ] &&
-        export EDITOR="${EDITOR:-pluma}"
+      [ $(command -v pluma) ] &&
+          export EDITOR="${EDITOR:-pluma}"
 
-    [ $(command -v kwrite) ] &&
-        export EDITOR="${EDITOR:-kwrite}"
+      [ $(command -v kwrite) ] &&
+          export EDITOR="${EDITOR:-kwrite}"
 
-    [ $(command -v scribe) ] &&
-        export EDITOR="${EDITOR:-scribe}"
+      [ $(command -v scribe) ] &&
+          export EDITOR="${EDITOR:-scribe}"
 
-    [ $(command -v geany) ] &&
-        export EDITOR="${EDITOR:-geany}"
+      [ $(command -v geany) ] &&
+          export EDITOR="${EDITOR:-geany}"
 
-    [ $(command -v gedit) ] &&
-        export EDITOR="${EDITOR:-gedit}"
+      [ $(command -v gedit) ] &&
+          export EDITOR="${EDITOR:-gedit}"
 
-    [ $(command -v code) ] &&
-        export EDITOR="${EDITOR:-code}"
+      [ $(command -v code) ] &&
+          export EDITOR="${EDITOR:-code}"
 
-    # most unix os provide this,
-    [ $(command -v vi) ] &&
-        export EDITOR="${EDITOR:-vi}"
+      # most unix os provide this,
+      [ $(command -v vi) ] &&
+          export EDITOR="${EDITOR:-vi}"
 
-    export VISUAL=${EDITOR}
-    export ALTERNATE_EDITOR=${EDITOR}
-fi
+      export VISUAL=${EDITOR}
+      export ALTERNATE_EDITOR=${EDITOR}
+  fi
 
-if [ "%(command -v nvim)" ]; then
-    export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" : "$XDG_CONFIG_HOME/nvim/init.gvim" | so $MYGVIMRC'
-    export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
-elif [ "$(command -v vim)" ]; then
-    export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYGVIMRC'
-    export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
-fi
+  # if [ "%(command -v nvim)" ]; then
+  #     export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" : "$XDG_CONFIG_HOME/nvim/init.gvim" | so $MYGVIMRC'
+  #     export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
+  # elif [ "$(command -v vim)" ]; then
+  #     export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYGVIMRC'
+  #     export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+  # fi
 #+end_src
 
+- $CHEMACS_PROFILE :: This variable is used as a tweak to have multiple Emacs configurations[fn:1].
+- VIM / GVIM / NVIM :: I used to set the VIMRC variable to =~/.config= directory. Commented since I rarely used them, their defaults is good enough fo a quick editing.
 *** terminals
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/03-terminals.sh :mkdirp t :shebang #!/bin/sh
 :END:
 
+The =$TERMINAL= variable is not used in any shell init files (that I know of). But handy when using a tiling window manager.
 #+begin_src sh -n
 # ~/.config/profile.d/03-terminal.sh
 # ${TERMINAL} apps
@@ -517,7 +530,9 @@ fi
   # <alexforsale@yahoo.com>
 
   # file manager
-  if [ "$(command -v ranger)" ]; then
+  if [ "$(command -v emacs)" ]; then
+      export FILE=${FILE:-emacsclient -c -e '(dired-jump)'}
+  elif [ "$(command -v ranger)" ]; then
       export FILE=${FILE:-ranger}
   elif [ "$(command -v pcmanfm)" ]; then
       export FILE=${FILE:-pcmanfm}
@@ -535,6 +550,7 @@ fi
       export FILE=${FILE:-rox}
   fi
 #+end_src
+Most system I used will default to Emacs's =dired=, if you use Emacs you should know dired.
 
 *** browser
 :PROPERTIES:
@@ -577,6 +593,7 @@ fi
           export BROWSER="${BROWSER:-links -g}"
   fi
 #+end_src
+I use more than one browsers, with firefox being my default browser.
 
 *** mail apps
 :PROPERTIES:
@@ -607,33 +624,36 @@ fi
   fi
 #+end_src
 
+Thunderbird never disapoint, so why bother?
 *** themes
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/10-themes.sh :mkdirp t :shebang #!/bin/sh
 :END:
 
 #+begin_src sh -n
-  # ~/.config/profile.d/10-themes.sh
-  # themes configuration
-  # <alexforsale@yahoo.com>
+    # ~/.config/profile.d/10-themes.sh
+    # themes configuration
+    # <alexforsale@yahoo.com>
 
-  # wal
-  #if [ "$(command -v wal)" ] && [ -z "${SSH_CLIENT}" ]; then
-  #    wal -R
-  #fi
+    # wal
+    #if [ "$(command -v wal)" ] && [ -z "${SSH_CLIENT}" ]; then
+    #    wal -R
+    #fi
 
-  if [ -n "${DESKTOP_SESSION}" ]; then
-      case ${XDG_CURRENT_DESKTOP} in
-          "KDE")
-              if [ -n "${xrdb_args}" ]; then
-                  $(command -v xrdb) -merge "${xrdb_args}" "${HOME}"/.Xresources >/dev/null 2>&1
-              fi
-              ;;
-      esac
-  fi
-  export GTK_THEME=${GTK_THEME:Breeze-Dark}
+    if [ -n "${DESKTOP_SESSION}" ]; then
+        case ${XDG_CURRENT_DESKTOP} in
+            "KDE")
+                if [ -n "${xrdb_args}" ]; then
+                    $(command -v xrdb) -merge "${xrdb_args}" "${HOME}"/.Xresources >/dev/null 2>&1
+                fi
+                ;;
+        esac
+    fi
+
+  [ -z "${GTK_THEME}" ] && export GTK_THEME=${GTK_THEME:Breeze-Dark}
 #+end_src
 
+I'm considering moving this into xorg configuration file, or to the display manager configuration.
 *** cargo
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-cargo.sh :mkdirp t :shebang #!/bin/sh
@@ -649,7 +669,7 @@ fi
      export PATH=$HOME/.cargo/bin:$PATH
   fi
 #+end_src
-
+For when I'm playful and messing around with rust.
 *** ccache
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-ccache.sh :mkdirp t :shebang #!/bin/sh
@@ -677,6 +697,7 @@ fi
           ;;
   esac
 #+end_src
+When turning on the monitor means compiling.
 
 *** composer
 :PROPERTIES:
@@ -693,6 +714,7 @@ fi
      export PATH="${HOME}/.config/composer/vendor/bin:${PATH}"
   fi
 #+end_src
+I used composer once, but obligated to have this config.
 
 *** dash
 :PROPERTIES:
@@ -709,6 +731,7 @@ fi
      [ -x /usr/bin/resizewin ] && /usr/bin/resizewin -z
   fi
 #+end_src
+This ensures the =~/.shrc~= file get sourced if exists.
 
 *** doom emacs
 :PROPERTIES:
@@ -729,7 +752,7 @@ fi
           export PATH="${PATH}/.config/doom/bin"
   fi
 #+end_src
-
+Doom Emacs have its own scripts.
 *** elinks
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-elinks.sh :mkdirp t :shebang #!/bin/sh
@@ -751,7 +774,7 @@ fi
         export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
   fi
 #+end_src
-
+Before you ask: "why bother with elinks?", try gentoo, or worse, linuxfromscratch.
 *** emacs vterm
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-emacs_vterm.sh :mkdirp t :shebang #!/bin/sh
@@ -797,6 +820,7 @@ fi
       vterm_printf "51;E$vterm_elisp"
   }
 #+end_src
+Perhaps later version of vterm doesn't really need this anymore?
 
 *** freeBSD
 :PROPERTIES:
@@ -809,7 +833,7 @@ fi
   # <alexforsale@yahoo.com>
 
   if [ "${DISTRO}" = "freebsd" ]; then
-     ENV=${HOME}/.shrc
+     [ -z "${ENV}" ] && ENV=${HOME}/.shrc
      export ENV
      export PAGER=less
      [ -x /usr/bin/resizewin ] && /usr/bin/resizewin -z
@@ -835,7 +859,7 @@ fi
       export PATH="${PATH}:${HOME}/.dotnet/tools"
   fi
 #+end_src
-
+Just to make me looks like a programmer.
 *** ghcup
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-ghcup.sh :mkdirp t :shebang #!/bin/sh
@@ -908,7 +932,7 @@ fi
 
   export QT_XCB_GL_INTEGRATION=none
 #+end_src
-
+Kinda redundant, if I'm using guix, this repository would never be used.
 *** nano
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-nano.sh :mkdirp t :shebang #!/bin/sh
@@ -934,7 +958,7 @@ fi
       mkdir -p "${XDG_CONFIG_HOME}/nano/backups"
   fi
 #+end_src
-
+My first exposure to the command line. Though I don't use nano anymore.
 *** nix
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-nix.sh :mkdirp t :shebang #!/bin/sh
@@ -961,7 +985,7 @@ fi
       fi
   fi
 #+end_src
-
+Hipsters use /nix/.
 *** npm
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-npm.sh :mkdirp t :shebang #!/bin/sh
@@ -1003,7 +1027,7 @@ fi
       export PASSWORD_STORE_ENABLE_EXTENSIONS=true
   fi
 #+end_src
-
+This app should have more love!
 *** perl
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-perl.sh :mkdirp t :shebang #!/bin/sh
@@ -1090,3 +1114,7 @@ fi
   chmod 700 "${SCREENDIR}"
   export SCREENRC="${SCREENDIR}/config"
 #+end_src
+Better than /tmux/. That statement just to annoy tmux users.
+* Footnotes
+
+[fn:1] https://github.com/plexus/chemacs2
