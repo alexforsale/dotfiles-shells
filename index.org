@@ -16,7 +16,7 @@
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
 This repository is a collection of common POSIX-compliant shells configuration files that I used.
-* =.shrc=
+* .shrc
 :PROPERTIES:
 :header-args: :tangle .shrc :shebang #!/bin/sh
 :END:
@@ -68,7 +68,7 @@ Taken from /FreeBSD/. This file will be used if the shell is invoked for interac
   # CDPATH=:$HOME
 #+end_src
 This file itself will only be called from the system / user profile (=/etc/profile= or =~/.profile=).
-* =.login=
+* .login
 :PROPERTIES:
 :header-args: :tangle .login :shebang #!/usr/bin/env tcsh
 :END:
@@ -87,7 +87,7 @@ Used by =csh= and =tcsh=. Read after =.cshrc= at login.
   if ( -x /usr/bin/resizewin ) /usr/bin/resizewin -z
 #+end_src
 
-* =.logout=
+* .logout
 :PROPERTIES:
 :header-args: :tangle .logout :shebang #!/usr/bin/env tcsh
 :END:
@@ -101,7 +101,7 @@ Used by =csh= and =tcsh=. Read after =.cshrc= at login.
   if ( -x `which clear` ) clear
 #+end_src
 
-* =.profile=
+* .profile
 :PROPERTIES:
 :header-args: :tangle .profile :shebang #!/bin/sh
 :END:
