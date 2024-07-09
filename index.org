@@ -933,6 +933,19 @@ Just to make me looks like a programmer.
   export QT_XCB_GL_INTEGRATION=none
 #+end_src
 Kinda redundant, if I'm using guix, this repository would never be used.
+*** Opam
+:PROPERTIES:
+:header-args: :tangle .config/profile.d/99-opam.sh :mkdirp t :shebang #!/bin/sh
+:END:
+
+#+begin_src sh -n
+  # ~/.config/profile.d/99-nano.sh
+  # <alexforsale@yahoo.com>
+
+  if [ "$(command -v opam)" ]; then
+      eval "$(opam env)"
+  fi
+#+end_src
 *** nano
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-nano.sh :mkdirp t :shebang #!/bin/sh
@@ -1115,6 +1128,24 @@ This app should have more love!
   export SCREENRC="${SCREENDIR}/config"
 #+end_src
 Better than /tmux/. That statement just to annoy tmux users.
+*** [[https://virtualenvwrapper.readthedocs.io/en/latest/][virtualenvwrapper]]
+:PROPERTIES:
+:header-args: :tangle .config/profile.d/99-virtualenvwrapper.sh :mkdirp t :shebang #!/bin/sh
+:END:
+
+#+begin_src sh
+  # ~/.config/profile.d/99-virtualenvwrapper.sh
+  # configuration for virtualenvwrapper
+  # <alexforsale@yahoo.com>
+
+  if [ -d "${HOME}/.virtualenvs" ]; then
+      export WORKON_HOME="${HOME}/.virtualenvs"
+  fi
+
+  if [ -x /usr/bin/virtualenvwrapper.sh ]; then
+      . /usr/bin/virtualenvwrapper.sh
+  fi
+#+end_src
 * Footnotes
 
 [fn:1] https://github.com/plexus/chemacs2
