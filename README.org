@@ -24,4 +24,4 @@
 #+end_html
 
 * About
-This repository is my collection of various shell initialization files. I'm using [[https://www.gnu.org/software/stow/][Gnu Stow]] to create symlinks from the files tangled in this /org/ file into my home directory since not all the files in this repository needs to be symlinked.
+This repository is a part of a collection of my [[https://github.com/alexforsale/dotfiles/][dotfiles]]. Please see [[./index.org][index.org]] for details.
