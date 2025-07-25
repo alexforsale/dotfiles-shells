@@ -683,6 +683,19 @@ I'm considering moving this into xorg configuration file, or to the display mana
   fi
 #+end_src
 For when I'm playful and messing around with rust.
+*** cabal
+:PROPERTIES:
+:header-args: :tangle .config/profile.d/99-cabal.sh :mkdirp t :shebang #!/bin/sh
+:END:
+#+begin_src sh
+    # ~/.config/profile.d/99-cabal.sh
+    # cabal configuration
+    # <alexforsale@yahoo.com>
+
+    if [ -d "$HOME/.cabal/bin" ];then
+       export PATH=$HOME/.cabal/bin:$PATH
+    fi
+#+end_src
 *** ccache
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-ccache.sh :mkdirp t :shebang #!/bin/sh
