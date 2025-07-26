@@ -524,7 +524,7 @@ fi
   # https://wiki.gentoo.org/wiki/Keychain
   if [ "$(command -v keychain)" ]; then
       [ -z "${HOSTNAME}" ] && HOSTNAME="$(uname -n)"
-      keychain --quiet --agents "gpg,ssh"
+      keychain --quiet
       [ -f "${HOME}/.keychain/${HOSTNAME}-sh" ] &&
           . "${HOME}/.keychain/${HOSTNAME}-sh"
       [ -f "${HOME}/.keychain/${HOSTNAME}-sh-gpg" ] &&
