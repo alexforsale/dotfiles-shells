@@ -1131,6 +1131,25 @@ This app should have more love!
   export PATH
 #+end_src
 
+*** ocaml
+:PROPERTIES:
+:header-args: :tangle .config/profile.d/99-ocaml.sh :mkdirp t :shebang #!/bin/sh
+:END:
+
+#+begin_src sh -n
+  # ~/.config/profile.d/99-ocaml.sh
+  # ocaml configuration
+  # <alexforsale@yahoo.com>
+
+  if [ -t 0 ]; then
+    test -r "~/.opam/opam-init/complete.sh" && . "~/.opam/opam-init/complete.sh" > /dev/null 2> /dev/null || true
+
+    test -r "~/.opam/opam-init/env_hook.sh" && . "~/.opam/opam-init/env_hook.sh" > /dev/null 2> /dev/null || true
+  fi
+
+  test -r "~/.opam/opam-init/variables.sh" && . "~/.opam/opam-init/variables.sh" > /dev/null 2> /dev/null || true
+#+end_src
+
 *** screen
 :PROPERTIES:
 :header-args: :tangle .config/profile.d/99-screen.sh :mkdirp t :shebang #!/bin/sh
