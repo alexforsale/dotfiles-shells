@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-12 Tue 08:24 -->
+<!-- 2025-08-27 Wed 14:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Common Shell initialization files</title>
@@ -28,47 +28,47 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6cacdff">.shrc</a></li>
-<li><a href="#orgb143666">.login</a></li>
-<li><a href="#org3b83177">.logout</a></li>
-<li><a href="#org5835dc2">.profile</a>
+<li><a href="#org864a220">.shrc</a></li>
+<li><a href="#org623b3df">.login</a></li>
+<li><a href="#org6fd14eb">.logout</a></li>
+<li><a href="#org1be1a41">.profile</a>
 <ul>
-<li><a href="#org1fcd57c">Modules</a>
+<li><a href="#org52fd0ed">Modules</a>
 <ul>
-<li><a href="#org05fabdd">distro</a></li>
-<li><a href="#org06d9ac2">locale</a></li>
-<li><a href="#org0ff8861">xdg-base-directory</a></li>
-<li><a href="#org63ad79f">editors</a></li>
-<li><a href="#orgf6082cf">terminals</a></li>
-<li><a href="#orga6f242d">security</a></li>
-<li><a href="#org73ef29c">file managers</a></li>
-<li><a href="#org1996fab">browser</a></li>
-<li><a href="#org6b53cf5">mail apps</a></li>
-<li><a href="#org964bd0d">themes</a></li>
-<li><a href="#orgbd12a1d">cargo</a></li>
-<li><a href="#org4aa4b6f">cabal</a></li>
-<li><a href="#orge211fd2">ccache</a></li>
-<li><a href="#orgb1e6192">composer</a></li>
-<li><a href="#orgddccb08">dash</a></li>
-<li><a href="#orgbf52d69">doom emacs</a></li>
-<li><a href="#orgf875609">elinks</a></li>
-<li><a href="#org46d1156">emacs vterm</a></li>
-<li><a href="#org1d42b6f">freeBSD</a></li>
-<li><a href="#org49c2018">fsharp</a></li>
-<li><a href="#org58c44b6">ghcup</a></li>
-<li><a href="#orgbdc2f1a">go</a></li>
-<li><a href="#org746abd9">guix</a></li>
-<li><a href="#org6cf813b">Opam</a></li>
-<li><a href="#orgc3e4a6a">nano</a></li>
-<li><a href="#orgc5b2578">nix</a></li>
-<li><a href="#org29884c1">npm</a></li>
-<li><a href="#org1bbb99d">password-store</a></li>
-<li><a href="#orga5c7ce3">perl</a></li>
-<li><a href="#orgd3903bd">python</a></li>
-<li><a href="#org53b954b">ruby</a></li>
-<li><a href="#org987df0d">ocaml</a></li>
-<li><a href="#orgb881ffe">screen</a></li>
-<li><a href="#orge465dd3">virtualenvwrapper</a></li>
+<li><a href="#orgb75fde7">distro</a></li>
+<li><a href="#orgceb1421">locale</a></li>
+<li><a href="#org3ea6c07">xdg-base-directory</a></li>
+<li><a href="#org2ebfd8a">editors</a></li>
+<li><a href="#org3355d70">terminals</a></li>
+<li><a href="#orgc516adf">security</a></li>
+<li><a href="#org26850b1">file managers</a></li>
+<li><a href="#org1c9c40f">browser</a></li>
+<li><a href="#org3515401">mail apps</a></li>
+<li><a href="#org9e2f0d2">themes</a></li>
+<li><a href="#orgb33b9eb">cargo</a></li>
+<li><a href="#org2b1eb98">cabal</a></li>
+<li><a href="#orgfaaf2ea">ccache</a></li>
+<li><a href="#orga4e7015">composer</a></li>
+<li><a href="#org15f10a0">dash</a></li>
+<li><a href="#orgcfd59de">doom emacs</a></li>
+<li><a href="#orgd319a8b">elinks</a></li>
+<li><a href="#orgec03c94">emacs vterm</a></li>
+<li><a href="#org8ebe041">freeBSD</a></li>
+<li><a href="#org2b0ebec">fsharp</a></li>
+<li><a href="#org8b25a3d">ghcup</a></li>
+<li><a href="#orgd0833fb">go</a></li>
+<li><a href="#orgaff546e">guix</a></li>
+<li><a href="#org29c1b13">Opam</a></li>
+<li><a href="#orgbde4d78">nano</a></li>
+<li><a href="#org8af9f9d">nix</a></li>
+<li><a href="#org74095c2">npm</a></li>
+<li><a href="#org738b465">password-store</a></li>
+<li><a href="#org3506806">perl</a></li>
+<li><a href="#orgfe38efe">python</a></li>
+<li><a href="#org054e1aa">ruby</a></li>
+<li><a href="#org84de921">ocaml</a></li>
+<li><a href="#orgb755760">screen</a></li>
+<li><a href="#orgbc396a2">virtualenvwrapper</a></li>
 </ul>
 </li>
 </ul>
@@ -79,9 +79,9 @@
 <p>
 This repository is a collection of common POSIX-compliant shells configuration files that I used.
 </p>
-<div id="outline-container-org6cacdff" class="outline-2">
-<h2 id="org6cacdff">.shrc</h2>
-<div class="outline-text-2" id="text-org6cacdff">
+<div id="outline-container-org864a220" class="outline-2">
+<h2 id="org864a220">.shrc</h2>
+<div class="outline-text-2" id="text-org864a220">
 <p>
 Taken from <i>FreeBSD</i>. This file will be used if the shell is invoked for interactive use and the environment variable ENV is set to this file.
 </p>
@@ -136,9 +136,9 @@ This file itself will only be called from the system / user profile (<code>/etc/
 </p>
 </div>
 </div>
-<div id="outline-container-orgb143666" class="outline-2">
-<h2 id="orgb143666">.login</h2>
-<div class="outline-text-2" id="text-orgb143666">
+<div id="outline-container-org623b3df" class="outline-2">
+<h2 id="org623b3df">.login</h2>
+<div class="outline-text-2" id="text-org623b3df">
 <p>
 Used by <code>csh</code> and <code>tcsh</code>. Read after <code>.cshrc</code> at login.
 </p>
@@ -158,9 +158,9 @@ Used by <code>csh</code> and <code>tcsh</code>. Read after <code>.cshrc</code> a
 </div>
 </div>
 
-<div id="outline-container-org3b83177" class="outline-2">
-<h2 id="org3b83177">.logout</h2>
-<div class="outline-text-2" id="text-org3b83177">
+<div id="outline-container-org6fd14eb" class="outline-2">
+<h2 id="org6fd14eb">.logout</h2>
+<div class="outline-text-2" id="text-org6fd14eb">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">-*- mode: sh -*-
 <span class="linenr">2: </span></span><span style="color: #b22222;">#</span><span style="color: #b22222;">
@@ -173,9 +173,9 @@ Used by <code>csh</code> and <code>tcsh</code>. Read after <code>.cshrc</code> a
 </div>
 </div>
 
-<div id="outline-container-org5835dc2" class="outline-2">
-<h2 id="org5835dc2">.profile</h2>
-<div class="outline-text-2" id="text-org5835dc2">
+<div id="outline-container-org1be1a41" class="outline-2">
+<h2 id="org1be1a41">.profile</h2>
+<div class="outline-text-2" id="text-org1be1a41">
 <p>
 Used by various shells. It is important to keep this script POSIX-compliant since there's more than one shell depends on it.
 </p>
@@ -238,16 +238,16 @@ Used by various shells. It is important to keep this script POSIX-compliant sinc
 </div>
 </div>
 
-<div id="outline-container-org1fcd57c" class="outline-3">
-<h3 id="org1fcd57c">Modules</h3>
-<div class="outline-text-3" id="text-org1fcd57c">
+<div id="outline-container-org52fd0ed" class="outline-3">
+<h3 id="org52fd0ed">Modules</h3>
+<div class="outline-text-3" id="text-org52fd0ed">
 <p>
 Their file names are prefixed with numbers <code>dd-filename</code> to ensure the order.
 </p>
 </div>
-<div id="outline-container-org05fabdd" class="outline-4">
-<h4 id="org05fabdd">distro</h4>
-<div class="outline-text-4" id="text-org05fabdd">
+<div id="outline-container-orgb75fde7" class="outline-4">
+<h4 id="orgb75fde7">distro</h4>
+<div class="outline-text-4" id="text-orgb75fde7">
 <p>
 This is an easier way for my shell scripts to query the currently running *nix distribution and their version.
 </p>
@@ -295,9 +295,9 @@ The <code>contains()</code> function is for a quick string search.
 </div>
 </div>
 
-<div id="outline-container-org06d9ac2" class="outline-4">
-<h4 id="org06d9ac2">locale</h4>
-<div class="outline-text-4" id="text-org06d9ac2">
+<div id="outline-container-orgceb1421" class="outline-4">
+<h4 id="orgceb1421">locale</h4>
+<div class="outline-text-4" id="text-orgceb1421">
 <p>
 This is rarely used, most of the times the the system shell startup files already defined these variables.
 </p>
@@ -314,9 +314,9 @@ This is rarely used, most of the times the the system shell startup files alread
 </div>
 </div>
 
-<div id="outline-container-org0ff8861" class="outline-4">
-<h4 id="org0ff8861">xdg-base-directory</h4>
-<div class="outline-text-4" id="text-org0ff8861">
+<div id="outline-container-org3ea6c07" class="outline-4">
+<h4 id="org3ea6c07">xdg-base-directory</h4>
+<div class="outline-text-4" id="text-org3ea6c07">
 <p>
 Ensure the running session comply to the XDG Base Directory specification. Variable declaration should be guarded in case the running system already declares it.
 </p>
@@ -428,9 +428,9 @@ Ensure the running session comply to the XDG Base Directory specification. Varia
 </div>
 </div>
 
-<div id="outline-container-org63ad79f" class="outline-4">
-<h4 id="org63ad79f">editors</h4>
-<div class="outline-text-4" id="text-org63ad79f">
+<div id="outline-container-org2ebfd8a" class="outline-4">
+<h4 id="org2ebfd8a">editors</h4>
+<div class="outline-text-4" id="text-org2ebfd8a">
 <dl class="org-dl">
 <dt>$EDITOR</dt><dd>Application set as this variable should be able to operate without the "advanced" terminal functionalities. Most of the times, <code>vi</code> is the default $EDITOR</dd>
 <dt>$VISUAL</dt><dd>for fullscreen editors.</dd>
@@ -515,9 +515,9 @@ Ensure the running session comply to the XDG Base Directory specification. Varia
 </dl>
 </div>
 </div>
-<div id="outline-container-orgf6082cf" class="outline-4">
-<h4 id="orgf6082cf">terminals</h4>
-<div class="outline-text-4" id="text-orgf6082cf">
+<div id="outline-container-org3355d70" class="outline-4">
+<h4 id="org3355d70">terminals</h4>
+<div class="outline-text-4" id="text-org3355d70">
 <p>
 The <code>$TERMINAL</code> variable is not used in any shell init files (that I know of). But handy when using a tiling window manager.
 </p>
@@ -563,9 +563,9 @@ The <code>$TERMINAL</code> variable is not used in any shell init files (that I 
 </div>
 </div>
 
-<div id="outline-container-orga6f242d" class="outline-4">
-<h4 id="orga6f242d">security</h4>
-<div class="outline-text-4" id="text-orga6f242d">
+<div id="outline-container-orgc516adf" class="outline-4">
+<h4 id="orgc516adf">security</h4>
+<div class="outline-text-4" id="text-orgc516adf">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/04-security.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">various security apps
@@ -602,10 +602,10 @@ The <code>$TERMINAL</code> variable is not used in any shell init files (that I 
 <span class="linenr">33: </span>        ;;
 <span class="linenr">34: </span>    *)
 <span class="linenr">35: </span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">append pinentry-program since its location varied for each distro
-<span class="linenr">36: </span></span>        [ -z <span style="color: #bc8f8f;">"$(</span><span style="font-weight: bold;">pgrep -u ${USER} -x gpg-agent</span><span style="color: #bc8f8f;">)"</span> ] &amp;&amp;
-<span class="linenr">37: </span>            gpg-agent --pinentry-program <span style="color: #bc8f8f;">"$(</span><span style="font-weight: bold;">command -v pinentry</span><span style="color: #bc8f8f;">)"</span> &gt;/dev/null 2&gt;&amp;1
-<span class="linenr">38: </span>        ;;
-<span class="linenr">39: </span><span style="color: #4169e1;">esac</span>
+<span class="linenr">36: </span></span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">[ -z "$(</span><span style="font-weight: bold;">pgrep -u ${USER} -x gpg-agent</span><span style="color: #b22222;">)" ] &amp;&amp;
+<span class="linenr">37: </span></span>        <span style="color: #b22222;">#     </span><span style="color: #b22222;">gpg-agent --pinentry-program "$(</span><span style="font-weight: bold;">command -v pinentry</span><span style="color: #b22222;">)" &gt;/dev/null 2&gt;&amp;1
+<span class="linenr">38: </span></span>        <span style="color: #b22222;"># </span><span style="color: #b22222;">;;
+<span class="linenr">39: </span></span><span style="color: #4169e1;">esac</span>
 <span class="linenr">40: </span>
 <span class="linenr">41: </span><span style="color: #00008b;">unset</span> SSH_AGENT_PID
 <span class="linenr">42: </span><span style="color: #4169e1;">if</span> [ <span style="color: #bc8f8f;">"${gnupg_SSH_AUTH_SOCK_by:-0}"</span> -ne $<span style="color: #b8860b;">$</span> ]; <span style="color: #4169e1;">then</span>
@@ -627,9 +627,9 @@ The <code>$TERMINAL</code> variable is not used in any shell init files (that I 
 </div>
 </div>
 
-<div id="outline-container-org73ef29c" class="outline-4">
-<h4 id="org73ef29c">file managers</h4>
-<div class="outline-text-4" id="text-org73ef29c">
+<div id="outline-container-org26850b1" class="outline-4">
+<h4 id="org26850b1">file managers</h4>
+<div class="outline-text-4" id="text-org26850b1">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/05-filemanagers.sh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">filemanager configuration
@@ -663,9 +663,9 @@ Most system I used will default to Emacs's <code>dired</code>, if you use Emacs 
 </div>
 </div>
 
-<div id="outline-container-org1996fab" class="outline-4">
-<h4 id="org1996fab">browser</h4>
-<div class="outline-text-4" id="text-org1996fab">
+<div id="outline-container-org1c9c40f" class="outline-4">
+<h4 id="org1c9c40f">browser</h4>
+<div class="outline-text-4" id="text-org1c9c40f">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/06-browser.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">${BROWSER} configuration
@@ -709,9 +709,9 @@ I use more than one browsers, with firefox being my default browser.
 </div>
 </div>
 
-<div id="outline-container-org6b53cf5" class="outline-4">
-<h4 id="org6b53cf5">mail apps</h4>
-<div class="outline-text-4" id="text-org6b53cf5">
+<div id="outline-container-org3515401" class="outline-4">
+<h4 id="org3515401">mail apps</h4>
+<div class="outline-text-4" id="text-org3515401">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/07-mail_apps.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">${MAIL_APP} configuration
@@ -742,9 +742,9 @@ Thunderbird never disapoint, so why bother?
 </p>
 </div>
 </div>
-<div id="outline-container-org964bd0d" class="outline-4">
-<h4 id="org964bd0d">themes</h4>
-<div class="outline-text-4" id="text-org964bd0d">
+<div id="outline-container-org9e2f0d2" class="outline-4">
+<h4 id="org9e2f0d2">themes</h4>
+<div class="outline-text-4" id="text-org9e2f0d2">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/10-themes.sh
 <span class="linenr"> 2: </span></span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">themes configuration
@@ -774,9 +774,9 @@ I'm considering moving this into xorg configuration file, or to the display mana
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd12a1d" class="outline-4">
-<h4 id="orgbd12a1d">cargo</h4>
-<div class="outline-text-4" id="text-orgbd12a1d">
+<div id="outline-container-orgb33b9eb" class="outline-4">
+<h4 id="orgb33b9eb">cargo</h4>
+<div class="outline-text-4" id="text-orgb33b9eb">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-cargo.sh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">cargo configuration
@@ -793,9 +793,9 @@ For when I'm playful and messing around with rust.
 </p>
 </div>
 </div>
-<div id="outline-container-org4aa4b6f" class="outline-4">
-<h4 id="org4aa4b6f">cabal</h4>
-<div class="outline-text-4" id="text-org4aa4b6f">
+<div id="outline-container-org2b1eb98" class="outline-4">
+<h4 id="org2b1eb98">cabal</h4>
+<div class="outline-text-4" id="text-org2b1eb98">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-cabal.sh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">cabal configuration
@@ -808,9 +808,9 @@ For when I'm playful and messing around with rust.
 </div>
 </div>
 </div>
-<div id="outline-container-orge211fd2" class="outline-4">
-<h4 id="orge211fd2">ccache</h4>
-<div class="outline-text-4" id="text-orge211fd2">
+<div id="outline-container-orgfaaf2ea" class="outline-4">
+<h4 id="orgfaaf2ea">ccache</h4>
+<div class="outline-text-4" id="text-orgfaaf2ea">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ccache.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">ccache configuration
@@ -840,9 +840,9 @@ When turning on the monitor means compiling.
 </div>
 </div>
 
-<div id="outline-container-orgb1e6192" class="outline-4">
-<h4 id="orgb1e6192">composer</h4>
-<div class="outline-text-4" id="text-orgb1e6192">
+<div id="outline-container-orga4e7015" class="outline-4">
+<h4 id="orga4e7015">composer</h4>
+<div class="outline-text-4" id="text-orga4e7015">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-composer.sh
 <span class="linenr">2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">composer path configuration
@@ -860,9 +860,9 @@ I used composer once, but obligated to have this config.
 </div>
 </div>
 
-<div id="outline-container-orgddccb08" class="outline-4">
-<h4 id="orgddccb08">dash</h4>
-<div class="outline-text-4" id="text-orgddccb08">
+<div id="outline-container-org15f10a0" class="outline-4">
+<h4 id="org15f10a0">dash</h4>
+<div class="outline-text-4" id="text-org15f10a0">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-dash.sh
 <span class="linenr">2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for dash shells and other sh equivalent
@@ -880,9 +880,9 @@ This ensures the <code>~/.shrc~</code> file get sourced if exists.
 </div>
 </div>
 
-<div id="outline-container-orgbf52d69" class="outline-4">
-<h4 id="orgbf52d69">doom emacs</h4>
-<div class="outline-text-4" id="text-orgbf52d69">
+<div id="outline-container-orgcfd59de" class="outline-4">
+<h4 id="orgcfd59de">doom emacs</h4>
+<div class="outline-text-4" id="text-orgcfd59de">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-doom_emacs.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">doom emacs path
@@ -903,9 +903,9 @@ Doom Emacs have its own scripts.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf875609" class="outline-4">
-<h4 id="orgf875609">elinks</h4>
-<div class="outline-text-4" id="text-orgf875609">
+<div id="outline-container-orgd319a8b" class="outline-4">
+<h4 id="orgd319a8b">elinks</h4>
+<div class="outline-text-4" id="text-orgd319a8b">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-elinks.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for elinks
@@ -928,9 +928,9 @@ Before you ask: "why bother with elinks?", try gentoo, or worse, linuxfromscratc
 </p>
 </div>
 </div>
-<div id="outline-container-org46d1156" class="outline-4">
-<h4 id="org46d1156">emacs vterm</h4>
-<div class="outline-text-4" id="text-org46d1156">
+<div id="outline-container-orgec03c94" class="outline-4">
+<h4 id="orgec03c94">emacs vterm</h4>
+<div class="outline-text-4" id="text-orgec03c94">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-emacs-vterm.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">https://github.com/akermu/emacs-libvterm
@@ -978,9 +978,9 @@ Perhaps later version of vterm doesn't really need this anymore?
 </div>
 </div>
 
-<div id="outline-container-org1d42b6f" class="outline-4">
-<h4 id="org1d42b6f">freeBSD</h4>
-<div class="outline-text-4" id="text-org1d42b6f">
+<div id="outline-container-org8ebe041" class="outline-4">
+<h4 id="org8ebe041">freeBSD</h4>
+<div class="outline-text-4" id="text-org8ebe041">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-freebsd.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for FreeBSD
@@ -1001,9 +1001,9 @@ Perhaps later version of vterm doesn't really need this anymore?
 </div>
 </div>
 
-<div id="outline-container-org49c2018" class="outline-4">
-<h4 id="org49c2018">fsharp</h4>
-<div class="outline-text-4" id="text-org49c2018">
+<div id="outline-container-org2b0ebec" class="outline-4">
+<h4 id="org2b0ebec">fsharp</h4>
+<div class="outline-text-4" id="text-org2b0ebec">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-fsharp.sh
 <span class="linenr">2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for F#
@@ -1020,9 +1020,9 @@ Just to make me looks like a programmer.
 </p>
 </div>
 </div>
-<div id="outline-container-org58c44b6" class="outline-4">
-<h4 id="org58c44b6">ghcup</h4>
-<div class="outline-text-4" id="text-org58c44b6">
+<div id="outline-container-org8b25a3d" class="outline-4">
+<h4 id="org8b25a3d">ghcup</h4>
+<div class="outline-text-4" id="text-org8b25a3d">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ghcup.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">haskell's ghcup configuration
@@ -1039,9 +1039,9 @@ Just to make me looks like a programmer.
 </div>
 </div>
 
-<div id="outline-container-orgbdc2f1a" class="outline-4">
-<h4 id="orgbdc2f1a">go</h4>
-<div class="outline-text-4" id="text-orgbdc2f1a">
+<div id="outline-container-orgd0833fb" class="outline-4">
+<h4 id="orgd0833fb">go</h4>
+<div class="outline-text-4" id="text-orgd0833fb">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-go.sh
 <span class="linenr">2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">$GOPATH configuration
@@ -1057,9 +1057,9 @@ Just to make me looks like a programmer.
 </div>
 </div>
 
-<div id="outline-container-org746abd9" class="outline-4">
-<h4 id="org746abd9">guix</h4>
-<div class="outline-text-4" id="text-org746abd9">
+<div id="outline-container-orgaff546e" class="outline-4">
+<h4 id="orgaff546e">guix</h4>
+<div class="outline-text-4" id="text-orgaff546e">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-guix.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">guix configuration
@@ -1098,9 +1098,9 @@ Kinda redundant, if I'm using guix, this repository would never be used.
 </p>
 </div>
 </div>
-<div id="outline-container-org6cf813b" class="outline-4">
-<h4 id="org6cf813b">Opam</h4>
-<div class="outline-text-4" id="text-org6cf813b">
+<div id="outline-container-org29c1b13" class="outline-4">
+<h4 id="org29c1b13">Opam</h4>
+<div class="outline-text-4" id="text-org29c1b13">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-nano.sh
 <span class="linenr">2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;"><a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -1112,9 +1112,9 @@ Kinda redundant, if I'm using guix, this repository would never be used.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc3e4a6a" class="outline-4">
-<h4 id="orgc3e4a6a">nano</h4>
-<div class="outline-text-4" id="text-orgc3e4a6a">
+<div id="outline-container-orgbde4d78" class="outline-4">
+<h4 id="orgbde4d78">nano</h4>
+<div class="outline-text-4" id="text-orgbde4d78">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-nano.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">see https://nano-editor.org
@@ -1141,9 +1141,9 @@ My first exposure to the command line. Though I don't use nano anymore.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc5b2578" class="outline-4">
-<h4 id="orgc5b2578">nix</h4>
-<div class="outline-text-4" id="text-orgc5b2578">
+<div id="outline-container-org8af9f9d" class="outline-4">
+<h4 id="org8af9f9d">nix</h4>
+<div class="outline-text-4" id="text-org8af9f9d">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-nix.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">nix configuration
@@ -1171,9 +1171,9 @@ Hipsters use <i>nix</i>.
 </p>
 </div>
 </div>
-<div id="outline-container-org29884c1" class="outline-4">
-<h4 id="org29884c1">npm</h4>
-<div class="outline-text-4" id="text-org29884c1">
+<div id="outline-container-org74095c2" class="outline-4">
+<h4 id="org74095c2">npm</h4>
+<div class="outline-text-4" id="text-org74095c2">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-npm.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">node packaged module configuration
@@ -1196,9 +1196,9 @@ Hipsters use <i>nix</i>.
 </div>
 </div>
 
-<div id="outline-container-org1bbb99d" class="outline-4">
-<h4 id="org1bbb99d">password-store</h4>
-<div class="outline-text-4" id="text-org1bbb99d">
+<div id="outline-container-org738b465" class="outline-4">
+<h4 id="org738b465">password-store</h4>
+<div class="outline-text-4" id="text-org738b465">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-password-store.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for pass
@@ -1217,9 +1217,9 @@ This app should have more love!
 </p>
 </div>
 </div>
-<div id="outline-container-orga5c7ce3" class="outline-4">
-<h4 id="orga5c7ce3">perl</h4>
-<div class="outline-text-4" id="text-orga5c7ce3">
+<div id="outline-container-org3506806" class="outline-4">
+<h4 id="org3506806">perl</h4>
+<div class="outline-text-4" id="text-org3506806">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-perl.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for perl
@@ -1242,9 +1242,9 @@ This app should have more love!
 </div>
 </div>
 
-<div id="outline-container-orgd3903bd" class="outline-4">
-<h4 id="orgd3903bd">python</h4>
-<div class="outline-text-4" id="text-orgd3903bd">
+<div id="outline-container-orgfe38efe" class="outline-4">
+<h4 id="orgfe38efe">python</h4>
+<div class="outline-text-4" id="text-orgfe38efe">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-python.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">Python configuration
@@ -1264,9 +1264,9 @@ This app should have more love!
 </div>
 </div>
 
-<div id="outline-container-org53b954b" class="outline-4">
-<h4 id="org53b954b">ruby</h4>
-<div class="outline-text-4" id="text-org53b954b">
+<div id="outline-container-org054e1aa" class="outline-4">
+<h4 id="org054e1aa">ruby</h4>
+<div class="outline-text-4" id="text-org054e1aa">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ruby.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">ruby configuration
@@ -1284,9 +1284,9 @@ This app should have more love!
 </div>
 </div>
 
-<div id="outline-container-org987df0d" class="outline-4">
-<h4 id="org987df0d">ocaml</h4>
-<div class="outline-text-4" id="text-org987df0d">
+<div id="outline-container-org84de921" class="outline-4">
+<h4 id="org84de921">ocaml</h4>
+<div class="outline-text-4" id="text-org84de921">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-ocaml.sh
 <span class="linenr"> 2: </span></span><span style="color: #b22222;"># </span><span style="color: #b22222;">ocaml configuration
@@ -1304,9 +1304,9 @@ This app should have more love!
 </div>
 </div>
 
-<div id="outline-container-orgb881ffe" class="outline-4">
-<h4 id="orgb881ffe">screen</h4>
-<div class="outline-text-4" id="text-orgb881ffe">
+<div id="outline-container-orgb755760" class="outline-4">
+<h4 id="orgb755760">screen</h4>
+<div class="outline-text-4" id="text-orgb755760">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-screen.sh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for GNU Screen
@@ -1330,9 +1330,9 @@ Better than <i>tmux</i>. That statement just to annoy tmux users.
 </p>
 </div>
 </div>
-<div id="outline-container-orge465dd3" class="outline-4">
-<h4 id="orge465dd3"><a href="https://virtualenvwrapper.readthedocs.io/en/latest/">virtualenvwrapper</a></h4>
-<div class="outline-text-4" id="text-orge465dd3">
+<div id="outline-container-orgbc396a2" class="outline-4">
+<h4 id="orgbc396a2"><a href="https://virtualenvwrapper.readthedocs.io/en/latest/">virtualenvwrapper</a></h4>
+<div class="outline-text-4" id="text-orgbc396a2">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">~/.config/profile.d/99-virtualenvwrapper.sh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">configuration for virtualenvwrapper
@@ -1365,7 +1365,7 @@ Better than <i>tmux</i>. That statement just to annoy tmux users.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-03-12 Tue 00:00</p>
 <p class="author">Author: Kristian Alexander P</p>
-<p class="date">Created: 2025-08-12 Tue 08:24</p>
+<p class="date">Created: 2025-08-27 Wed 14:51</p>
 </div>
 </body>
 </html>
