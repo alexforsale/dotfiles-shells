@@ -510,9 +510,9 @@ fi
           ;;
       ,*)
           # append pinentry-program since its location varied for each distro
-          [ -z "$(pgrep -u ${USER} -x gpg-agent)" ] &&
-              gpg-agent --pinentry-program "$(command -v pinentry)" >/dev/null 2>&1
-          ;;
+          # [ -z "$(pgrep -u ${USER} -x gpg-agent)" ] &&
+          #     gpg-agent --pinentry-program "$(command -v pinentry)" >/dev/null 2>&1
+          # ;;
   esac
 
   unset SSH_AGENT_PID
