@@ -1167,10 +1167,10 @@ This app should have more love!
       else
           mkdir -p "${XDG_CONFIG_HOME}/screen"
       fi
+      export SCREENDIR="${XDG_CONFIG_HOME}/screen"
+      chmod 700 "${SCREENDIR}"
+      export SCREENRC="${SCREENDIR}/config"
   fi
-  export SCREENDIR="${XDG_CONFIG_HOME}/screen"
-  chmod 700 "${SCREENDIR}"
-  export SCREENRC="${SCREENDIR}/config"
 #+end_src
 Better than /tmux/. That statement just to annoy tmux users.
 *** [[https://virtualenvwrapper.readthedocs.io/en/latest/][virtualenvwrapper]]
